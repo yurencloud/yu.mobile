@@ -1,5 +1,5 @@
 {
-  "name": "yu.ui",
+  "name": "yu.mobile",
   "version": "1.0.14",
   "description": "yu vue ui components project",
   "author": {
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yurencloud/yu.ui.git"
+    "url": "https://github.com/yurencloud/yu.mobile.git"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

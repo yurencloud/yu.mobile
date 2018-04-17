@@ -4,7 +4,7 @@
     class="yu-button"
     :autofocus="autofocus"
     :type="nativeType"
-    :class="[type, size, {disabled:disabled},shape, {plain:plain}, {loading:loading}]" >
+    :class="[type, size, {disabled:disabled},shape, {plain:plain}, {loading:loading}, {fluid:fluid}]" >
     <i v-if="icon" class="iconfont" v-bind:class="[icon]"></i>
     <i v-if="loading" class="iconfont icon-loading loading"></i>
     <slot/>
@@ -33,6 +33,7 @@ export default {
       type: String,
       default: 'button',
     },
+    fluid: Boolean,
     submit: Boolean,
   },
   methods: {
@@ -58,14 +59,19 @@ export default {
 
   .yu-button {
     // 基础属性
-    padding: 0 20px;
+    padding: 0 $huge;
     border-radius: 4px;
     text-align: center;
-    margin-right: 8px;
-    margin-bottom: 12px;
+    margin-right: px2rem(8px);
+    margin-bottom: px2rem(12px);
     font-family: $font-family;
     transition: all .3s ease;
     outline: none;
+
+    &.fluid{
+      width: 100%;
+      display: block;
+    }
 
     // 默认属性
     background-color: #fff;

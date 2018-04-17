@@ -5,6 +5,10 @@ $warming: #e6b322;
 $danger:#F56C6C;
 $info:#909399;
 $background:#f5f7fa;
+$rem: 50px;
+@function px2rem($px) {
+  @return $px/$rem*1rem;
+}
 
 // 文字颜色
 $dark-text:#303133;
@@ -22,19 +26,19 @@ $lighter-border:#F2F6FC;
 $font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 
 // 字体大小
-$huge:20px;
-$big:18px;
-$large:16px;
-$normal:14px;
-$small:13px;
-$tiny:12px;
+$huge:px2rem(20px);
+$big:px2rem(18px);
+$large:px2rem(16px);
+$normal:px2rem(14px);
+$small:px2rem(13px);
+$tiny:px2rem(12px);
 
 // 控制元素的大小，主要是由height和padding来控制
 // normal和medium用14px字体，small和mini用12px字体
-$normal-height:40px;
-$medium-height:36px;
-$small-height:32px;
-$mini-height:28px;
+$normal-height:px2rem(40px);
+$medium-height:px2rem(36px);
+$small-height:px2rem(32px);
+$mini-height:px2rem(28px);
 
 $sizes:normal, medium, small, mini;
 $size-map: (
@@ -54,5 +58,7 @@ $colors: (
 );
 
 $box-shadow:0 2px 12px 0 rgba(0,0,0,.1);
+
+
 
 
