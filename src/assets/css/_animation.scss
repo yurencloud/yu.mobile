@@ -1,0 +1,32 @@
+@mixin hover($name,$color) {
+  animation: $name 300ms;
+  animation-fill-mode: forwards;
+  @keyframes #{$name} {
+    0% {
+      background-color: $color;
+    }
+    100% {
+      background-color: lighten($color, 10);
+    }
+  }
+}
+
+
+@mixin angleAnimation() {
+  input {
+    & + span.suffix > i {
+      transition: all ease .4s;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      border: 1px solid $primary;
+      & + span.suffix > i.icon-angle-down {
+        transform: rotate(-180deg);
+      }
+    }
+    transition: all ease .4s;
+  }
+}
+
