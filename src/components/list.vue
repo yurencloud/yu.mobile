@@ -1,22 +1,35 @@
 <template>
   <div class="yu-list">
-    <div class="prepend">
-      <i v-if="icon" class="iconfont" :class="[icon]"></i>
-      <img v-if="imgSrc" :src="imgSrc" />
-      <slot name="prepend" />
+    <yu-text v-if="header">{{header}}</yu-text>
+    <div class="list-box" :class="[{click:click,disabled:disabled}]" @click="handleClick">
+      <div class="list">
+        <div class="title">
+          <div v-if="showPrepend" class="prepend">
+            <i v-if="icon" class="iconfont" :class="[icon]"></i>
+            <img v-if="imgSrc" :src="imgSrc"/>
+            <slot name="prepend"/>
+          </div>
+          <div class="after">
+            <div class="main" :class="[{short:short,disabled:disabled}]">{{title}}</div>
+            <div v-if="description" class="description">{{description}}</div>
+          </div>
+        </div>
+        <div v-if="showAppend" class="content" :class="[{middle: description}]" :style="{alignItems:contentAlign}">
+          <div>
+            {{content}}
+            <i v-if="arrow" class="iconfont icon-angle-right arrow"></i>
+            <slot name="append"/>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="title">
-      <div class="main">{{title}}</div>
-      <div v-if="description" class="description">{{description}}</div>
-    </div>
-    <div class="content" :class="[{middle: description}]">
-      {{content}}
-      <i v-if="arrow" class="iconfont icon-angle-right arrow"></i>
-    </div>
+    <yu-text v-if="footer">{{footer}}</yu-text>
   </div>
 </template>
 
 <script>
+import YuText from './text';
+
 export default {
   name: 'YuList',
   props: {
@@ -26,6 +39,33 @@ export default {
     arrow: Boolean,
     icon: String,
     imgSrc: String,
+    click: Boolean,
+    header: String,
+    footer: String,
+    short: Boolean,
+    contentAlign: String, // alignItems:flex-start | flex-end | center | baseline | stretch；
+    disabled: Boolean,
+  },
+  methods: {
+    handleClick() {
+      if (!this.click || this.disabled) return;
+      this.$emit('click');
+    },
+  },
+  computed: {
+    showPrepend() {
+      return this.icon || this.imgSrc || this.$slots.prepend;
+    },
+    showAppend() {
+      return this.content || this.arrow || this.$slots.append;
+    },
+  },
+  mounted() {
+    document.body.addEventListener('touchstart', () => {
+    });
+  },
+  components: {
+    YuText,
   },
 };
 </script>
@@ -35,56 +75,83 @@ export default {
   @import "../assets/css/function";
 
   .yu-list {
-    background: #fff;
-    border-top: 1px solid $border;
-    border-bottom: 1px solid $border;
-    font-size: $large;
-    padding: 0 px2rem(14px);
-    vertical-align: middle;
-
-    .prepend{
-      display: inline-block;
-      height: 100%;
-      vertical-align: middle;
-      margin-right: $tiny;
-      i{
-        color: $text;
-        display: block;
-        font-size: px2rem(30px);
+    .list-box {
+      background: #fff;
+      /*取消移动端的点击阴影*/
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      &.click:active:not(.disabled) {
+        transition: background-color .2s;
+        background: $active;
       }
-      img{
-        width: px2rem(30px);
+      .list {
+        border-top: 1px solid $border;
+        border-bottom: 1px solid $border;
+        font-size: $large;
+        padding: 0 px2rem(14px);
+        vertical-align: middle;
+        margin-bottom: -1px;
+        display: flex;
+        justify-content: space-between;
       }
     }
 
-    .title{
-      display: inline-block;
-      vertical-align: middle;
-      .main{
+    .title {
+      .prepend {
+        display: inline-block;
+        vertical-align: middle;
+        i {
+          color: $text;
+          display: block;
+          font-size: px2rem(30px);
+          margin-right: $tiny;
+        }
+        img {
+          width: px2rem(30px);
+          margin-right: $tiny;
+        }
+      }
+      .after {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .main {
         font-size: $large;
         color: $dark-text;
         padding: px2rem(12px) 0;
+        &.short{
+          overflow:hidden;
+          text-overflow:ellipsis;
+          white-space:nowrap;
+          width: 300px;
+        }
+        &.disabled{
+          color: $lighter-text;
+        }
       }
-      .description{
+      .description {
         font-size: $normal;
         color: $lighter-text;
         padding: 0 0 px2rem(12px) 0;
       }
     }
 
-    .content{
-      display: inline-block;
-      float: right;
-      color: $light-text;
-      padding: px2rem(12px) 0;
-      &.middle{
-      line-height: px2rem(50px);
+    .content {
+      display:flex;/*Flex布局*/
+      align-items:center;/*指定垂直居中*/
+      &>div{
+        /*display: inline-block;*/
+        color: $light-text;
+        padding: px2rem(12px) 0;
+        min-width: 100px;
+        text-align: right;
+        .arrow {
+          color: $lighter-text;
+          font-size: px2rem(26px);
+          vertical-align: middle;
+        }
       }
-      .arrow{
-        color: $lighter-text;
-        font-size: px2rem(26px);
-        vertical-align: middle;
-      }
+
     }
 
   }

@@ -6,13 +6,13 @@
 
 
     <div class="mobile-box">
-      <div class="sub-title">屏宽按钮</div>
+      <yu-text>屏宽按钮</yu-text>
       <div class="addPadding">
         <yu-button fluid>默认按钮</yu-button>
         <yu-button type="primary" fluid>主要按钮</yu-button>
       </div>
 
-      <div class="sub-title">基础用法</div>
+      <yu-text>基础用法</yu-text>
       <div class="addPadding">
         <yu-button>默认按钮</yu-button>
         <yu-button type="primary">主要按钮</yu-button>
@@ -29,7 +29,7 @@
         <yu-button type="info" plain>信息按钮</yu-button>
       </div>
 
-      <div class="sub-title">图标按钮</div>
+      <yu-text>图标按钮</yu-text>
       <div class="addPadding">
         <yu-button icon="icon-edit" type="primary"/>
         <yu-button icon="icon-accessory" type="primary"/>
@@ -38,7 +38,7 @@
         <yu-button icon="icon-upload" type="primary">上传</yu-button>
       </div>
 
-      <div class="sub-title">按钮组</div>
+      <yu-text>按钮组</yu-text>
       <!--<yu-buttons>-->
       <!--<yu-button type="primary">-->
       <!--<i class="iconfont icon-angle-left"></i>-->
@@ -55,7 +55,7 @@
       <!--<yu-button icon="icon-trash" type="primary"/>-->
       <!--</yu-buttons>-->
 
-      <div class="sub-title">禁用状态</div>
+      <yu-text>禁用状态</yu-text>
       <div class="addPadding">
         <yu-button disabled>默认按钮</yu-button>
         <yu-button type="primary" disabled>主要按钮</yu-button>
@@ -72,12 +72,12 @@
         <yu-button type="info" plain disabled>信息按钮</yu-button>
       </div>
 
-      <div class="sub-title">加载中</div>
+      <yu-text>加载中</yu-text>
       <div class="addPadding">
         <yu-button loading type="primary">按钮</yu-button>
       </div>
 
-      <div class="sub-title">不同尺寸</div>
+      <yu-text>不同尺寸</yu-text>
       <div class="addPadding">
         <yu-button type="primary">正常按钮</yu-button>
         <yu-button type="primary" size="medium">中等按钮</yu-button>
@@ -85,7 +85,7 @@
         <yu-button type="primary" size="mini">超小按钮</yu-button>
       </div>
 
-      <div class="sub-title">圆形按钮</div>
+      <yu-text>圆形按钮</yu-text>
       <div class="addPadding">
         <yu-button shape="circle" icon="icon-user"/>
         <yu-button shape="circle" icon="icon-user" size="medium"/>
@@ -97,25 +97,80 @@
 
     <div class="title">列表</div>
     <div class="mobile-box">
-      <div class="sub-title">普通用法</div>
+      <yu-text>普通用法</yu-text>
       <yu-list title="我是标题" content="我是内容" />
 
-      <div class="sub-title">带副标题</div>
-      <yu-list title="我是标题" content="我是内容" description="带副标题"/>
+      <yu-text>显示头部，底部文本</yu-text>
+      <yu-list title="我是标题" header="我是头部文本" content="我是内容" />
+      <yu-list title="我是标题" footer="我是底部文本" content="我是内容" />
 
-      <div class="sub-title">内容为箭头</div>
+      <yu-text>带副标题</yu-text>
+      <yu-list title="我是标题" header="我是头部文本" content="我是内容" description="带副标题"/>
+
+      <yu-text>内容为箭头</yu-text>
       <yu-list title="我是标题" arrow description="带副标题"/>
 
-      <div class="sub-title">前置图标/图片/自定义</div>
+
+      <yu-text>前置图标/图片/自定义</yu-text>
       <yu-list title="我是标题" icon="icon-user" arrow description="带副标题"/>
       <yu-list title="我是标题" imgSrc="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" arrow description="带副标题"/>
-      <yu-list title="我是标题" arrow description="带副标题">
+      <yu-list title="我是标题" click arrow description="带副标题">
         <div slot="prepend">
           <yu-button shape="circle" icon="icon-user" style="margin-top: 8px"/>
         </div>
       </yu-list>
 
+      <yu-text>列表组</yu-text>
+      <yu-lists>
+        <yu-list title="我是标题" click icon="icon-user" arrow description="带副标题"/>
+        <yu-list title="我是标题" imgSrc="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" arrow description="带副标题"/>
+        <yu-list title="我是标题" arrow description="带副标题">
+          <div slot="prepend">
+            <yu-button shape="circle" icon="icon-user" style="margin-top: 8px"/>
+          </div>
+        </yu-list>
+      </yu-lists>
+
+      <yu-text>列表组显示头部和底部文本</yu-text>
+      <yu-lists header="我是头部文本" footer="我是底部文本">
+        <yu-list title="我是标题"  click icon="icon-user" arrow description="带副标题"/>
+        <yu-list title="我是标题"  click icon="icon-user" arrow description="带副标题"/>
+      </yu-lists>
+
+      <div class="sub-title">段落</div>
+      <yu-list title="我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题"/>
+      <yu-list title="我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题" short/>
+      <yu-list title="我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题" content="我是内容"/>
+
+      <div class="sub-title">内容对齐</div>
+      <yu-list title="我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题"
+               content="我是内容"
+               content-align="flex-end"
+      />
+
+      <div class="sub-title">自定义内容</div>
+      <yu-list title="我是标题">
+        <yu-button type="primary" slot="append" style="margin: 0;" size="mini">确认</yu-button>
+      </yu-list>
+
+      <div class="sub-title">禁用列表</div>
+      <yu-list title="我是标题" disabled />
+
+      <yu-list />
     </div>
+
+    <div class="title">文本</div>
+    <div class="mobile-box">
+      <div class="sub-title">普通用法</div>
+      <yu-text>我是普通文本</yu-text>
+    </div>
+
+    <div class="title">复选框</div>
+    <div class="mobile-box">
+      <div class="sub-title">普通用法</div>
+      <yu-checkbox :options="options"/>
+    </div>
+
     <div style="margin-bottom: 400px"></div>
   </div>
 </template>
@@ -124,12 +179,27 @@
 import 'whatwg-fetch';
 import YuButton from '../components/button';
 import YuList from '../components/list';
+import YuLists from '../components/lists';
+import YuText from '../components/text';
+import YuCheckbox from '../components/checkbox';
 
 export default {
   name: 'ViewContainer',
+  data() {
+    return {
+      options: [
+        { value: 0, label: '博士' },
+        { value: 1, label: '本科' },
+        { value: 2, label: '高中' },
+      ],
+    };
+  },
   components: {
     YuButton,
     YuList,
+    YuLists,
+    YuText,
+    YuCheckbox,
   },
 };
 </script>
