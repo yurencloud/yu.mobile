@@ -3,7 +3,7 @@
     <yu-text v-if="header">{{header}}</yu-text>
     <div class="list-box" :class="[{click:click,disabled:disabled}]" @click="handleClick">
       <div class="list">
-        <div class="title">
+        <div v-if="showTitle" class="title">
           <div v-if="showPrepend" class="prepend">
             <i v-if="icon" class="iconfont" :class="[icon]"></i>
             <img v-if="imgSrc" :src="imgSrc"/>
@@ -45,6 +45,10 @@ export default {
     short: Boolean,
     contentAlign: String, // alignItems:flex-start | flex-end | center | baseline | stretch；
     disabled: Boolean,
+    showTitle: {
+      type: Boolean,
+      default: true,
+    },
   },
   methods: {
     handleClick() {
@@ -104,10 +108,14 @@ export default {
           display: block;
           font-size: px2rem(30px);
           margin-right: $tiny;
+          margin-top: px2rem(12px);
+          margin-bottom: px2rem(12px);
         }
         img {
           width: px2rem(30px);
           margin-right: $tiny;
+          margin-top: px2rem(8px);
+          margin-bottom: px2rem(8px);
         }
       }
       .after {

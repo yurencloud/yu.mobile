@@ -112,9 +112,9 @@
 
 
       <yu-text>前置图标/图片/自定义</yu-text>
-      <yu-list title="我是标题" icon="icon-user" arrow description="带副标题"/>
-      <yu-list title="我是标题" imgSrc="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" arrow description="带副标题"/>
-      <yu-list title="我是标题" click arrow description="带副标题">
+      <yu-list title="我是标题" icon="icon-user" arrow />
+      <yu-list title="我是标题" imgSrc="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" arrow />
+      <yu-list title="我是标题" click arrow >
         <div slot="prepend">
           <yu-button shape="circle" icon="icon-user" style="margin-top: 8px"/>
         </div>
@@ -168,7 +168,76 @@
     <div class="title">复选框</div>
     <div class="mobile-box">
       <div class="sub-title">普通用法</div>
-      <yu-checkbox :options="options"/>
+      <yu-checkbox name="b" :options="options"/>
+
+      <div class="sub-title">禁止选项</div>
+      <yu-checkbox name="a" :options="options2"/>
+
+      <div class="sub-title">禁止全部</div>
+      <yu-checkbox name="a" :options="options2" disabled/>
+
+      <div class="sub-title">列表外底部选项</div>
+      <yu-checkbox name="c" :options="options3" bottom>
+          <span slot="footer">我已经阅读 <a href="">协议</a></span>
+      </yu-checkbox>>
+    </div>
+
+    <div class="title">单选框</div>
+    <div class="mobile-box">
+      <div class="sub-title">普通用法</div>
+      <yu-radio name="d" :options="options"/>
+
+      <div class="sub-title">禁用选项</div>
+      <yu-radio name="d" :options="options2"/>
+
+      <div class="sub-title">禁止全部</div>
+      <yu-radio name="d" :options="options" disabled/>
+    </div>
+
+    <div class="title">输入框</div>
+    <div class="mobile-box">
+      <div class="sub-title">普通用法</div>
+      <yu-input title="名字" placeholder="请输入名字" name="myname1"/>
+
+      <div class="sub-title">自动光标</div>
+      <yu-input title="名字" placeholder="请输入名字" name="myname2" autofocus/>
+
+      <div class="sub-title">可清除输入</div>
+      <yu-input title="名字" placeholder="请输入名字" name="myname3" clear/>
+
+      <div class="sub-title">无标题</div>
+      <yu-input title="名字" placeholder="请输入名字" name="myname4"  />
+
+      <div class="sub-title">自定义图标/图片/组件</div>
+      <yu-input icon="icon-user" placeholder="请输入名字" name="myname" />
+      <yu-input img-src="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" placeholder="请输入名字" name="myname5" />
+
+      <div class="sub-title">自定义后缀</div>
+      <yu-input title="名字" placeholder="请输入名字" name="myname5" extra="元" />
+      <div class="sub-title">格式</div>
+      <yu-input title="银行卡" placeholder="请输入" name="myname5" format="bank" type="tel" />
+      <yu-input title="手机号" placeholder="请输入" name="myname5" format="phone" type="tel" />
+      <yu-input title="密码" placeholder="请输入" name="myname5" type="password" />
+      <yu-input title="数字键盘" placeholder="请输入" name="myname5" type="number" />
+      <div class="sub-title">只读</div>
+      <yu-input title="名字" placeholder="请输入名字" name="myname2" readonly/>
+      <div class="sub-title">禁用</div>
+      <yu-input title="名字" placeholder="请输入名字" name="myname2" disabled/>
+      <div class="sub-title">输入组</div>
+      <yu-lists>
+        <yu-input title="名字" placeholder="请输入名字" name="myname1"/>
+        <yu-input title="名字" placeholder="请输入名字" name="myname2" autofocus/>
+        <yu-input title="名字" placeholder="请输入名字" name="myname3" clear/>
+      </yu-lists>
+
+
+    </div>
+
+    <div class="title">选择器</div>
+    <div class="mobile-box">
+      <div class="sub-title">普通用法</div>
+      <yu-picker />
+
     </div>
 
     <div style="margin-bottom: 400px"></div>
@@ -182,15 +251,42 @@ import YuList from '../components/list';
 import YuLists from '../components/lists';
 import YuText from '../components/text';
 import YuCheckbox from '../components/checkbox';
+import YuRadio from '../components/radio';
+import YuInput from '../components/input';
+import YuPicker from '../components/picker';
 
 export default {
   name: 'ViewContainer',
   data() {
     return {
       options: [
-        { value: 0, label: '博士' },
-        { value: 1, label: '本科' },
-        { value: 2, label: '高中' },
+        { value: 0, label: '博士', description: '正经的', checked: false },
+        { value: 1, label: '本科', checked: false },
+        { value: 2, label: '高中', checked: false },
+      ],
+      options2: [
+        { value: 0, label: '博士', checked: false },
+        { value: 1, label: '本科', checked: false, disabled: true },
+        { value: 2, label: '高中', checked: false },
+      ],
+      options3: [
+        { value: 0, checked: false },
+      ],
+      inputOptions: [
+        { title: '名字', type: 'text', placeholder: '请输入名字', name: 'myname' },
+        { title: '名字', type: 'text', placeholder: '请输入名字', name: 'myname1', autofocus: true },
+        { title: '名字', type: 'text', placeholder: '请输入名字', name: 'myname2', clear: true },
+        { type: 'text', placeholder: '请输入名字', name: 'myname2', icon: 'icon-user' },
+        { type: 'text', placeholder: '请输入名字', name: 'myname2', imgSrc: 'https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png' },
+        { type: 'text', placeholder: '请输入名字', name: 'myname2', showTitle: false },
+        { title: '名字', type: 'text', placeholder: '请输入名字', name: 'myname2', extra: '元' },
+        { title: '银行卡', type: 'tel', placeholder: '请输入', name: 'myname2', format: 'bank' },
+        { title: '手机号', type: 'tel', placeholder: '请输入', name: 'myname2', format: 'phone' },
+        { title: '密码', type: 'password', placeholder: '请输入', name: 'myname2' },
+        { title: '数字键盘', type: 'number', placeholder: '请输入', name: 'myname2' },
+        { title: '默认值', type: 'text', placeholder: '请输入', name: 'myname2', value: '默认值' },
+        { title: '只读', type: 'text', placeholder: '请输入', name: 'myname2', value: '默认值', readonly: true },
+        { title: '禁用', type: 'text', placeholder: '请输入', name: 'myname2', disabled: true },
       ],
     };
   },
@@ -200,6 +296,9 @@ export default {
     YuLists,
     YuText,
     YuCheckbox,
+    YuRadio,
+    YuInput,
+    YuPicker,
   },
 };
 </script>

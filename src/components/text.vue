@@ -1,5 +1,5 @@
 <template>
-  <div class="yu-text">
+  <div class="yu-text" @click="handleClick" :class="[{disabled: disabled}]">
       <slot/>
   </div>
 </template>
@@ -8,6 +8,15 @@
 
 export default {
   name: 'YuText',
+  props: {
+    disabled: Boolean,
+  },
+  methods: {
+    handleClick() {
+      if (this.disabled) return;
+      this.$emit('click');
+    },
+  },
 };
 </script>
 

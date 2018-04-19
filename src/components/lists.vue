@@ -8,6 +8,7 @@
 
 <script>
 import YuText from './text';
+
 export default {
   name: 'YuLists',
   props: {
