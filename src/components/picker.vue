@@ -26,32 +26,32 @@
                 <!--&gt;{{item.label}}</li>-->
               </ul>
             </div>
-            <div class="scrollList" >
-              <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <!--<li-->
-                  <!--v-for="(item, index) in secondOptions"-->
-                  <!--v-bind:key="item.value"-->
-                  <!--:class="{active:index === secondActive,disabled:item.disabled}"-->
-                  <!--@click="secondClick(index, $event)"-->
-                <!--&gt;{{item.label}}</li>-->
-              </ul>
-            </div>
-            <div class="scrollList" >
-              <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <!--<li-->
-                  <!--v-for="(item, index) in thirdOptions"-->
-                  <!--v-bind:key="item.value"-->
-                  <!--:class="{active:index === thirdActive,disabled:item.disabled}"-->
-                  <!--@click="thirdClick(index, $event)"-->
-                <!--&gt;{{item.label}}</li>-->
-              </ul>
-            </div>
+            <!--<div class="scrollList" >-->
+              <!--<ul>-->
+                <!--<li>1</li>-->
+                <!--<li>2</li>-->
+                <!--<li>3</li>-->
+                <!--&lt;!&ndash;<li&ndash;&gt;-->
+                  <!--&lt;!&ndash;v-for="(item, index) in secondOptions"&ndash;&gt;-->
+                  <!--&lt;!&ndash;v-bind:key="item.value"&ndash;&gt;-->
+                  <!--&lt;!&ndash;:class="{active:index === secondActive,disabled:item.disabled}"&ndash;&gt;-->
+                  <!--&lt;!&ndash;@click="secondClick(index, $event)"&ndash;&gt;-->
+                <!--&lt;!&ndash;&gt;{{item.label}}</li>&ndash;&gt;-->
+              <!--</ul>-->
+            <!--</div>-->
+            <!--<div class="scrollList" >-->
+              <!--<ul>-->
+                <!--<li>1</li>-->
+                <!--<li>2</li>-->
+                <!--<li>3</li>-->
+                <!--&lt;!&ndash;<li&ndash;&gt;-->
+                  <!--&lt;!&ndash;v-for="(item, index) in thirdOptions"&ndash;&gt;-->
+                  <!--&lt;!&ndash;v-bind:key="item.value"&ndash;&gt;-->
+                  <!--&lt;!&ndash;:class="{active:index === thirdActive,disabled:item.disabled}"&ndash;&gt;-->
+                  <!--&lt;!&ndash;@click="thirdClick(index, $event)"&ndash;&gt;-->
+                <!--&lt;!&ndash;&gt;{{item.label}}</li>&ndash;&gt;-->
+              <!--</ul>-->
+            <!--</div>-->
           </div>
         </div>
       </div>
