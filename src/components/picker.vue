@@ -8,52 +8,42 @@
           <div>标题</div>
           <div class="confirm">确认</div>
         </div>
-        <div class="container"
-
-        >
-          <div class="scrolls">
+          <div v-if="type==='select'" class="scrolls"
+               @mouseover="handleMouseover"
+               @mouseleave="handleMouseleave"
+               v-show="visible"
+          >
             <div class="line"></div>
-            <div class="scrollList" >
+            <div class="scrollList" @scroll="firstScroll($event)">
               <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <!--<li-->
-                  <!--v-for="(item, index) in options"-->
-                  <!--v-bind:key="item.value"-->
-                  <!--:class="{active:index === firstActive,disabled:item.disabled}"-->
-                  <!--@click="firstClick(index, $event)"-->
-                <!--&gt;{{item.label}}</li>-->
+                <li
+                  v-for="(item, index) in options[0]"
+                  v-bind:key="item.value"
+                  :class="{active:index === firstActive,disabled:item.disabled}"
+                >{{item.label}}</li>
               </ul>
             </div>
-            <!--<div class="scrollList" >-->
-              <!--<ul>-->
-                <!--<li>1</li>-->
-                <!--<li>2</li>-->
-                <!--<li>3</li>-->
-                <!--&lt;!&ndash;<li&ndash;&gt;-->
-                  <!--&lt;!&ndash;v-for="(item, index) in secondOptions"&ndash;&gt;-->
-                  <!--&lt;!&ndash;v-bind:key="item.value"&ndash;&gt;-->
-                  <!--&lt;!&ndash;:class="{active:index === secondActive,disabled:item.disabled}"&ndash;&gt;-->
-                  <!--&lt;!&ndash;@click="secondClick(index, $event)"&ndash;&gt;-->
-                <!--&lt;!&ndash;&gt;{{item.label}}</li>&ndash;&gt;-->
-              <!--</ul>-->
-            <!--</div>-->
-            <!--<div class="scrollList" >-->
-              <!--<ul>-->
-                <!--<li>1</li>-->
-                <!--<li>2</li>-->
-                <!--<li>3</li>-->
-                <!--&lt;!&ndash;<li&ndash;&gt;-->
-                  <!--&lt;!&ndash;v-for="(item, index) in thirdOptions"&ndash;&gt;-->
-                  <!--&lt;!&ndash;v-bind:key="item.value"&ndash;&gt;-->
-                  <!--&lt;!&ndash;:class="{active:index === thirdActive,disabled:item.disabled}"&ndash;&gt;-->
-                  <!--&lt;!&ndash;@click="thirdClick(index, $event)"&ndash;&gt;-->
-                <!--&lt;!&ndash;&gt;{{item.label}}</li>&ndash;&gt;-->
-              <!--</ul>-->
-            <!--</div>-->
+
+            <div v-if="cols>=2" class="scrollList" @scroll="secondScroll($event)">
+              <ul>
+                <li
+                  v-for="(item, index) in options[1]"
+                  v-bind:key="item.value"
+                  :class="{active:index === firstActive,disabled:item.disabled}"
+                >{{item.label}}</li>
+              </ul>
+            </div>
+
+            <div v-if="cols===3" class="scrollList" @scroll="thirdScroll($event)">
+              <ul>
+                <li
+                  v-for="(item, index) in options[2]"
+                  v-bind:key="item.value"
+                  :class="{active:index === firstActive,disabled:item.disabled}"
+                >{{item.label}}</li>
+              </ul>
+            </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
@@ -65,12 +55,64 @@ import YuList from './list';
 export default {
   name: 'YuPicker',
   data() {
-    return {};
+    return {
+      visible: true,
+      value: '',
+      label: '',
+      selects: [],
+      firstActive: 0,
+      secondActive: 0,
+      thirdActive: 0,
+      fix: false,
+      scrollTop: 0,
+    };
   },
   props: {
-    cascader: Array,
+    options: Array, // 不联动 [[][][]], 联动 [{}{}{}]
+    cols: Number, // 列数
+    type: {
+      type: String,
+      default: 'select', // select 不联动， cascader 联动
+    },
   },
-  methods: {},
+  methods: {
+    handleClear() {
+      this.value = '';
+    },
+    handleMouseover() {
+      this.scrollTop = document.getElementsByTagName('html')[0].scrollTop;
+      document.addEventListener('scroll', this.stopScroll);
+    },
+    handleMouseleave() {
+      document.removeEventListener('scroll', this.stopScroll);
+    },
+    stopScroll(e) {
+      e.target.scrollingElement.scrollTop = this.scrollTop;
+    },
+    firstScroll($event) {
+      if (this.fix) return;
+      console.log(3);
+      setTimeout(() => {
+        console.log(2);
+        this.firstActive = parseInt($event.target.scrollTop / 40, 0);
+        $event.target.scrollTop = this.firstActive * 40;
+      }, 400);
+    },
+    secondScroll($event) {
+      if (this.fix) return;
+      setTimeout(() => {
+        this.secondActive = parseInt($event.target.scrollTop / 40, 0);
+        $event.target.scrollTop = this.secondActive * 40;
+      }, 400);
+    },
+    thirdScroll($event) {
+      if (this.fix) return;
+      setTimeout(() => {
+        this.thirdActive = parseInt($event.target.scrollTop / 40, 0);
+        $event.target.scrollTop = this.thirdActive * 40;
+      }, 400);
+    },
+  },
   components: {
     YuList,
   },
@@ -113,7 +155,6 @@ export default {
             }
           }
         }
-
         .line {
           position: absolute;
           top: 130px;
@@ -122,15 +163,19 @@ export default {
           height: 40px;
           width: 100%;
         }
-        .container {
-          z-index: 10000;
-          width: 100%;
+
           .scrolls {
-            color: $text;
-            font-size: 0;
+            display: flex;
+            justify-content:center;
+            z-index: 10000;
+            width: 100%;
+            /*text-align: center;*/
             .scrollList {
-              white-space: nowrap;
+              align-items: center;
+              color: $text;
               font-size: 0;
+              width: 33.3%;
+              white-space: nowrap;
               box-sizing: border-box;
               display: inline-block;
               max-height: 200px;
@@ -148,7 +193,7 @@ export default {
                 border-radius: 2px;
                 background-color: $border;
               }
-              width: 33.3%;
+
               ul {
                 display: block;
                 margin: 80px auto;
@@ -178,7 +223,6 @@ export default {
           }
 
 
-        }
       }
     }
 

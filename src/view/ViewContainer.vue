@@ -98,11 +98,11 @@
     <div class="title">列表</div>
     <div class="mobile-box">
       <yu-text>普通用法</yu-text>
-      <yu-list title="我是标题" content="我是内容" />
+      <yu-list title="我是标题" content="我是内容"/>
 
       <yu-text>显示头部，底部文本</yu-text>
-      <yu-list title="我是标题" header="我是头部文本" content="我是内容" />
-      <yu-list title="我是标题" footer="我是底部文本" content="我是内容" />
+      <yu-list title="我是标题" header="我是头部文本" content="我是内容"/>
+      <yu-list title="我是标题" footer="我是底部文本" content="我是内容"/>
 
       <yu-text>带副标题</yu-text>
       <yu-list title="我是标题" header="我是头部文本" content="我是内容" description="带副标题"/>
@@ -112,9 +112,9 @@
 
 
       <yu-text>前置图标/图片/自定义</yu-text>
-      <yu-list title="我是标题" icon="icon-user" arrow />
-      <yu-list title="我是标题" imgSrc="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" arrow />
-      <yu-list title="我是标题" click arrow >
+      <yu-list title="我是标题" icon="icon-user" arrow/>
+      <yu-list title="我是标题" imgSrc="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" arrow/>
+      <yu-list title="我是标题" click arrow>
         <div slot="prepend">
           <yu-button shape="circle" icon="icon-user" style="margin-top: 8px"/>
         </div>
@@ -123,7 +123,8 @@
       <yu-text>列表组</yu-text>
       <yu-lists>
         <yu-list title="我是标题" click icon="icon-user" arrow description="带副标题"/>
-        <yu-list title="我是标题" imgSrc="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" arrow description="带副标题"/>
+        <yu-list title="我是标题" imgSrc="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" arrow
+                 description="带副标题"/>
         <yu-list title="我是标题" arrow description="带副标题">
           <div slot="prepend">
             <yu-button shape="circle" icon="icon-user" style="margin-top: 8px"/>
@@ -133,8 +134,8 @@
 
       <yu-text>列表组显示头部和底部文本</yu-text>
       <yu-lists header="我是头部文本" footer="我是底部文本">
-        <yu-list title="我是标题"  click icon="icon-user" arrow description="带副标题"/>
-        <yu-list title="我是标题"  click icon="icon-user" arrow description="带副标题"/>
+        <yu-list title="我是标题" click icon="icon-user" arrow description="带副标题"/>
+        <yu-list title="我是标题" click icon="icon-user" arrow description="带副标题"/>
       </yu-lists>
 
       <div class="sub-title">段落</div>
@@ -154,9 +155,9 @@
       </yu-list>
 
       <div class="sub-title">禁用列表</div>
-      <yu-list title="我是标题" disabled />
+      <yu-list title="我是标题" disabled/>
 
-      <yu-list />
+      <yu-list/>
     </div>
 
     <div class="title">文本</div>
@@ -178,8 +179,9 @@
 
       <div class="sub-title">列表外底部选项</div>
       <yu-checkbox name="c" :options="options3" bottom>
-          <span slot="footer">我已经阅读 <a href="">协议</a></span>
-      </yu-checkbox>>
+        <span slot="footer">我已经阅读 <a href="">协议</a></span>
+      </yu-checkbox>
+      >
     </div>
 
     <div class="title">单选框</div>
@@ -206,19 +208,20 @@
       <yu-input title="名字" placeholder="请输入名字" name="myname3" clear/>
 
       <div class="sub-title">无标题</div>
-      <yu-input title="名字" placeholder="请输入名字" name="myname4"  />
+      <yu-input title="名字" placeholder="请输入名字" name="myname4"/>
 
       <div class="sub-title">自定义图标/图片/组件</div>
-      <yu-input icon="icon-user" placeholder="请输入名字" name="myname" />
-      <yu-input img-src="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" placeholder="请输入名字" name="myname5" />
+      <yu-input icon="icon-user" placeholder="请输入名字" name="myname"/>
+      <yu-input img-src="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" placeholder="请输入名字"
+                name="myname5"/>
 
       <div class="sub-title">自定义后缀</div>
-      <yu-input title="名字" placeholder="请输入名字" name="myname5" extra="元" />
+      <yu-input title="名字" placeholder="请输入名字" name="myname5" extra="元"/>
       <div class="sub-title">格式</div>
-      <yu-input title="银行卡" placeholder="请输入" name="myname5" format="bank" type="tel" />
-      <yu-input title="手机号" placeholder="请输入" name="myname5" format="phone" type="tel" />
-      <yu-input title="密码" placeholder="请输入" name="myname5" type="password" />
-      <yu-input title="数字键盘" placeholder="请输入" name="myname5" type="number" />
+      <yu-input title="银行卡" placeholder="请输入" name="myname5" format="bank" type="tel"/>
+      <yu-input title="手机号" placeholder="请输入" name="myname5" format="phone" type="tel"/>
+      <yu-input title="密码" placeholder="请输入" name="myname5" type="password"/>
+      <yu-input title="数字键盘" placeholder="请输入" name="myname5" type="number"/>
       <div class="sub-title">只读</div>
       <yu-input title="名字" placeholder="请输入名字" name="myname2" readonly/>
       <div class="sub-title">禁用</div>
@@ -230,13 +233,13 @@
         <yu-input title="名字" placeholder="请输入名字" name="myname3" clear/>
       </yu-lists>
 
-
+      <div style="margin: 50px"></div>
     </div>
 
     <div class="title">选择器</div>
     <div class="mobile-box">
       <div class="sub-title">普通用法</div>
-      <yu-picker />
+      <yu-picker :options="pickerOptions"/>
 
     </div>
 
@@ -277,7 +280,12 @@ export default {
         { title: '名字', type: 'text', placeholder: '请输入名字', name: 'myname1', autofocus: true },
         { title: '名字', type: 'text', placeholder: '请输入名字', name: 'myname2', clear: true },
         { type: 'text', placeholder: '请输入名字', name: 'myname2', icon: 'icon-user' },
-        { type: 'text', placeholder: '请输入名字', name: 'myname2', imgSrc: 'https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png' },
+        {
+          type: 'text',
+          placeholder: '请输入名字',
+          name: 'myname2',
+          imgSrc: 'https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png',
+        },
         { type: 'text', placeholder: '请输入名字', name: 'myname2', showTitle: false },
         { title: '名字', type: 'text', placeholder: '请输入名字', name: 'myname2', extra: '元' },
         { title: '银行卡', type: 'tel', placeholder: '请输入', name: 'myname2', format: 'bank' },
@@ -287,6 +295,13 @@ export default {
         { title: '默认值', type: 'text', placeholder: '请输入', name: 'myname2', value: '默认值' },
         { title: '只读', type: 'text', placeholder: '请输入', name: 'myname2', value: '默认值', readonly: true },
         { title: '禁用', type: 'text', placeholder: '请输入', name: 'myname2', disabled: true },
+      ],
+      pickerOptions: [
+        [
+          { value: 0, label: '博士' },
+          { value: 1, label: '本科' },
+          { value: 2, label: '高中' },
+        ],
       ],
     };
   },
@@ -314,14 +329,13 @@ export default {
     font-size: $huge;
   }
 
-  #container>.title{
-      color: $text;
-      padding: $normal 0;
-      margin: $huge 0;
-      font-size: $huge;
-      border-bottom: 1px solid $border;
+  #container > .title {
+    color: $text;
+    padding: $normal 0;
+    margin: $huge 0;
+    font-size: $huge;
+    border-bottom: 1px solid $border;
   }
-
 
   .mobile-box {
     height: 667px;
