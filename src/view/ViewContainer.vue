@@ -332,7 +332,15 @@
       <yu-text>
         <yu-button fluid @click="activeToast('one')">纯文字</yu-button>
       </yu-text>
+      <yu-text>
+        <yu-button fluid @click="activeToast('two')">带图标</yu-button>
+      </yu-text>
+      <yu-text>
+        <yu-button fluid @click="activeToast('three')">不同状态</yu-button>
+      </yu-text>
       <yu-toast ref="one" content="纯文字"/>
+      <yu-toast ref="two" content="带图标" icon="icon-check"/>
+      <yu-toast ref="three" content="不同状态" status="success"/>
     </div>
 
     <div style="margin-bottom: 400px"></div>
