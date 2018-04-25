@@ -1,65 +1,58 @@
 <template>
-  <div id="container" style="margin: 30px">
-    <h2>YU.MOBILE</h2>
-
-    <div class="title">按钮</div>
-
-    <div class="sub-title">基础用法</div>
-
-    <div style="margin-bottom: 400px"></div>
+  <div id="container">
+    <yu-picker :options="pickerOptions" :cols="3"/>
   </div>
 </template>
 
 <script>
 import 'whatwg-fetch';
 import YuButton from '../components/button';
+import YuPicker from '../components/picker';
 
 export default {
   name: 'ViewContainer2',
+  data() {
+    return {
+      pickerOptions: [
+        [
+          { value: 0, label: '博士' },
+          { value: 1, label: '本科' },
+          { value: 2, label: '高中' },
+        ],
+        [
+          { value: 0, label: '博士' },
+          { value: 1, label: '本科' },
+          { value: 2, label: '高中' },
+        ],
+        [
+          { value: 0, label: '博士' },
+          { value: 1, label: '本科' },
+          { value: 2, label: '高中' },
+        ],
+      ],
+    }
+  },
   components: {
     YuButton,
+    YuPicker,
   },
 };
 </script>
 
 <style lang="scss" type="text/scss">
   @import "../assets/css/varible";
-
-  .title {
-    color: $text;
-    padding: 14px 0;
-    margin: 20px 0;
-    border-bottom: 1px solid $border;
+  html {
+    font-size: $rem;
   }
 
-  .sub-title {
-    color: $text;
-    padding: 0 8px;
-    margin: 20px 0;
-    border-left: 4px solid $primary;
+  h2 {
+    font-size: $huge;
   }
-
-  .dropdown-list {
-    .list-content {
-      display: inline-block;
-      float: left;
-      margin-right: 50px;
-    }
+  body{
+     margin: 0;
   }
-
-  .my-description {
-    float: right;
-    color: $lighter-text;
-  }
-
-  .message {
+  #container{
+    height: 600px;
     width: 100%;
-    height: 40px;
-    background: $success;
-    line-height: 40px;
-    color: #fff;
-    border-radius: 4px;
-    padding: 8px;
-    margin: 20px 0;
   }
 </style>

@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     handleClick() {
-      if (!this.click || this.disabled) return;
+      if (this.disabled) return;
       this.$emit('click');
     },
   },
@@ -90,7 +90,7 @@ export default {
       .list {
         border-top: 1px solid $border;
         border-bottom: 1px solid $border;
-        font-size: $large;
+        font-size: $big;
         padding: 0 px2rem(14px);
         vertical-align: middle;
         margin-bottom: -1px;
@@ -124,7 +124,7 @@ export default {
       }
 
       .main {
-        font-size: $large;
+        font-size: $big;
         color: $dark-text;
         padding: px2rem(12px) 0;
         &.short{

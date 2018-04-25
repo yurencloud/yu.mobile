@@ -91,7 +91,7 @@ export default {
       .checkbox {
         position: relative;
         border: 1px solid $primary;
-        border-radius: 10px;
+        border-radius: 50%;
         background-color: $primary;
         & + span {
           color: $primary;
@@ -102,11 +102,11 @@ export default {
           border: 2px solid #fff;
           border-top-width: 0;
           border-right-width: 0;
-          width: 10px;
-          height: 4px;
+          width: px2rem(14px);
+          height: px2rem(6px);
           -webkit-transform: rotate(-50deg);
           position: absolute;
-          top: 3px;
+          top: 4px;
           left: 1px;
         }
       }
@@ -115,10 +115,10 @@ export default {
     .checkbox {
       position: relative;
       margin-right: 6px;
-      margin-bottom: -1px;
+      margin-bottom: -6px;
       display: inline-block;
-      width: 14px;
-      height: 14px;
+      width: px2rem(20px);
+      height: px2rem(20px);
       border: 1px solid $dark-border;
       border-radius: 50%;
       background-color: #fff;

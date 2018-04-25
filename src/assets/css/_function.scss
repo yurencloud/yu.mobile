@@ -51,9 +51,9 @@
       width: $height;
       line-height: $height;
       @if $height > $small-height {
-        font-size: $normal
+        font-size: $big
       } @else {
-        font-size: $tiny
+        font-size: $normal
       }
     }
   }
@@ -66,9 +66,9 @@
       height: $height;
       line-height: $height;
       @if $height > $small-height {
-        font-size: $normal
+        font-size: $big
       } @else {
-        font-size: $tiny
+        font-size: $normal
       }
     }
   }
@@ -82,18 +82,18 @@
         height: $height;
         line-height: $height;
         @if $height > $small-height {
-          font-size: $normal
+          font-size: $big
         } @else {
-          font-size: $tiny
+          font-size: $normal
         }
       }
       span.prefix {
         line-height: $height;
         i {
           @if $height > $small-height {
-            font-size: $normal
+            font-size: $big
           } @else {
-            font-size: $tiny
+            font-size: $normal
           }
         }
       }
@@ -101,9 +101,9 @@
         line-height: $height;
         i {
           @if $height > $small-height {
-            font-size: $normal
+            font-size: $big
           } @else {
-            font-size: $tiny
+            font-size: $normal
           }
         }
       }

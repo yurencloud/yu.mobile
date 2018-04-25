@@ -77,7 +77,7 @@ export default {
     background-color: #fff;
     border: 1px solid $border;
     color: $text;
-    font-size: $normal;
+    font-size: $big;
     &.default:hover:not(.disabled),&:focus:not(.disabled) {
       color: $primary;
       border: 1px solid lighten($primary,10);
@@ -114,6 +114,7 @@ export default {
     i.loading{
       display: inline-block;
       animation: loading 2s linear infinite;
+      font-size: $big;
       @keyframes loading {
         0% {
           transform: rotate(0);

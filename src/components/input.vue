@@ -1,7 +1,7 @@
 <template>
     <yu-list :show-title="showTitle" :title="title" class="yu-input" :icon="icon" :imgSrc="imgSrc" :disabled="disabled">
       <div slot="append" class="append">
-      <input :type="type"
+      <input v-if="!textarea" :type="type"
              :name="name"
              :placeholder="placeholder"
              :autofocus="autofocus"
@@ -10,6 +10,18 @@
              :readonly="readonly || disabled"
              v-model="value"
       >
+      <textarea v-if="textarea" :type="type"
+             :name="name"
+             :placeholder="placeholder"
+             :autofocus="autofocus"
+             @blur="handleBlur($event)"
+             @keyup="handleKeyup($event)"
+             :readonly="readonly || disabled"
+             v-model="value"
+             :rows="rows"
+      >
+      </textarea>
+      <span v-if="wordCount" class="wordCount">{{value.length}}<span>/{{max}}</span></span>
       <i v-if="clear&&showClear" class="iconfont icon-close-circle yu-close" @click="handleClear($event)"></i>
       <span class="extra">{{extra}}</span>
       </div>
@@ -50,6 +62,10 @@ export default {
     clear: Boolean,
     extra: String,
     format: String,
+    rows: Number, // 多行显示
+    textarea: Boolean,
+    max: Number, // 字数限制
+    wordCount: Boolean,
   },
   methods: {
     handleClear($event) {
@@ -58,6 +74,10 @@ export default {
       this.$emit('clear', $event);
     },
     handleKeyup($event) {
+      // 如果次数过长，则剪切
+      if (this.max && this.value.length > this.max) {
+        this.value = this.value.substr(0, this.max);
+      }
       if (this.clear && this.value.trim().length > 0) {
         this.showClear = true;
       }
@@ -91,6 +111,7 @@ export default {
         .content{
           width: 100%;
           .append{
+            position: relative;
             .extra{
               float: right;
             }
@@ -107,7 +128,7 @@ export default {
               display: inline-block;
               border: none;
               outline: none;
-              font-size: $large;
+              font-size: $big;
               font-family: $font-family;
               &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
                 color: $lighter-text;
@@ -124,6 +145,36 @@ export default {
               &::-webkit-input-placeholder{
                 color: $lighter-text;
               }
+            }
+
+            textarea{
+              display: inline-block;
+              border: none;
+              outline: none;
+              font-size: $big;
+              font-family: $font-family;
+              &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                color: $lighter-text;
+              }
+
+              &::-moz-placeholder { /* Mozilla Firefox 19+ */
+                color: $lighter-text;
+              }
+
+              &:-ms-input-placeholder{
+                color: $lighter-text;
+              }
+
+              &::-webkit-input-placeholder{
+                color: $lighter-text;
+              }
+              resize:none;
+            }
+
+            .wordCount{
+              position: absolute;
+              bottom: 4px;
+              right: 6px;
             }
           }
         }

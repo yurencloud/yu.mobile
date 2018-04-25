@@ -77,7 +77,7 @@ export default {
           border: 2px solid $primary;
           border-top-width: 0;
           border-right-width: 0;
-          width: px2rem(12px);
+          width: px2rem(14px);
           height: px2rem(8px);
           -webkit-transform: rotate(-50deg);
           position: absolute;

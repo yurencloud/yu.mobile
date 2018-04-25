@@ -25,7 +25,7 @@ export default {
 
   .yu-text {
     color: $light-text;
-    font-size: $large;
+    font-size: $big;
     padding: $tiny $normal;
   }
 </style>

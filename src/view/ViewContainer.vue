@@ -201,8 +201,11 @@
       <div class="sub-title">普通用法</div>
       <yu-input title="名字" placeholder="请输入名字" name="myname1"/>
 
+      <div class="sub-title">多行输入</div>
+      <yu-input title="名字" placeholder="请输入名字" name="myname1" textarea :rows="2" :max="5" wordCount/>
+
       <div class="sub-title">自动光标</div>
-      <yu-input title="名字" placeholder="请输入名字" name="myname2" autofocus/>
+      <yu-input title="名字" placeholder="请输入名字" name="myname2" autofocus />
 
       <div class="sub-title">可清除输入</div>
       <yu-input title="名字" placeholder="请输入名字" name="myname3" clear/>
@@ -238,9 +241,98 @@
 
     <div class="title">选择器</div>
     <div class="mobile-box">
-      <div class="sub-title">普通用法</div>
-      <yu-picker :options="pickerOptions"/>
+      <!--<div class="sub-title">单列不联动</div>-->
+      <!--<yu-picker :options="pickerOptions"/>-->
 
+      <!--<div class="sub-title">多列不联动</div>-->
+      <!--<yu-picker :options="pickerOptions" :cols="3"/>-->
+
+      <div class="sub-title">多列联动</div>
+      <yu-picker title="输入地址" :options="cascaderOptions" :cols="3" type="cascader"/>
+
+    </div>
+
+    <div class="title">滑动开关</div>
+    <div class="mobile-box">
+      <div class="sub-title">普通用法</div>
+      <yu-switch />
+    </div>
+
+    <div class="title">搜索栏</div>
+    <div class="mobile-box">
+      <div class="sub-title">普通用法</div>
+      <yu-search/>
+    </div>
+
+    <div class="title">通告栏</div>
+    <div class="mobile-box">
+      <div class="sub-title">普通用法</div>
+      <yu-notice>中华人民共合国万岁中华人民共合国万岁中华人民共合国万岁</yu-notice>
+
+      <div class="sub-title">滚动文字</div>
+      <yu-notice marquee>中华人民共合国万岁中华人民共合国万岁中华人民共合国万岁</yu-notice>
+
+      <div class="sub-title">可点击</div>
+      <yu-notice arrow>中华人民共合国万岁</yu-notice>
+
+      <div class="sub-title">可关闭</div>
+      <yu-notice close>中华人民共合国万岁</yu-notice>
+
+
+    </div>
+
+    <div class="title">加载器</div>
+    <div class="mobile-box">
+      <div class="sub-title">普通用法</div>
+      <yu-loading />
+
+      <div class="sub-title">添加提示语</div>
+      <yu-loading >加载中...</yu-loading>
+      <div class="sub-title">变换大小</div>
+      <yu-loading size="large" >加载中...</yu-loading>
+      <yu-loading size="big" >加载中...</yu-loading>
+      <div class="sub-title" >同行</div>
+      <yu-loading inline >加载中...</yu-loading>
+      <yu-loading inline size="large" >加载中...</yu-loading>
+      <yu-loading inline size="big" >加载中...</yu-loading>
+      <div class="sub-title">左右</div>
+      <yu-loading align="left" >加载中...</yu-loading>
+      <yu-loading align="center" >加载中...</yu-loading>
+      <yu-loading align="right" >加载中...</yu-loading>
+    </div>
+
+    <div class="title">动作菜单</div>
+    <div class="mobile-box">
+      <div class="sub-title">普通用法</div>
+      <div class="addPadding">
+      <yu-button fluid @click="activeAction">默认状态</yu-button>
+      <yu-button fluid>默认状态</yu-button>
+      </div>
+      <yu-action ref="action" title="我是标题">
+        <li>hello</li>
+        <li>hello</li>
+        <li>hello</li>
+      </yu-action>
+    </div>
+
+    <div class="title">对话框</div>
+    <div class="mobile-box" style="box-sizing: padding-box">
+      <div class="sub-title">普通用法</div>
+      <yu-text>
+        <yu-button fluid @click="activeModal">默认状态</yu-button>
+      </yu-text>
+      <yu-modal ref="modal" title="我是标题">
+          确认确认确认确认
+      </yu-modal>
+    </div>
+
+    <div class="title">提示框</div>
+    <div class="mobile-box" style="box-sizing: padding-box">
+      <div class="sub-title">普通用法</div>
+      <yu-text>
+        <yu-button fluid @click="activeToast('one')">纯文字</yu-button>
+      </yu-text>
+      <yu-toast ref="one" content="纯文字"/>
     </div>
 
     <div style="margin-bottom: 400px"></div>
@@ -257,6 +349,13 @@ import YuCheckbox from '../components/checkbox';
 import YuRadio from '../components/radio';
 import YuInput from '../components/input';
 import YuPicker from '../components/picker';
+import YuSwitch from '../components/switch';
+import YuSearch from '../components/search';
+import YuNotice from '../components/notice';
+import YuLoading from '../components/loading';
+import YuAction from '../components/action';
+import YuModal from '../components/modal';
+import YuToast from '../components/toast';
 
 export default {
   name: 'ViewContainer',
@@ -302,8 +401,64 @@ export default {
           { value: 1, label: '本科' },
           { value: 2, label: '高中' },
         ],
+        [
+          { value: 0, label: '博士' },
+          { value: 1, label: '本科' },
+          { value: 2, label: '高中' },
+        ],
+        [
+          { value: 0, label: '博士' },
+          { value: 1, label: '本科' },
+          { value: 2, label: '高中' },
+        ],
+      ],
+      cascaderOptions: [
+        {
+          label: '浙江',
+          value: '1',
+          children: [
+            {
+              label: '杭州',
+              value: '11',
+              children: [{ label: '滨江', value: '111' }],
+            },
+          ],
+        },
+        {
+          label: '山东',
+          value: '2',
+          children: [
+            {
+              label: '济南',
+              value: '22',
+              children: [{ label: '小区', value: '222' }],
+            },
+          ],
+        },
+        {
+          label: '福建',
+          value: '3',
+          children: [
+            {
+              label: '厦门',
+              value: '33',
+              children: [{ label: '思明', value: '333' }],
+            },
+          ],
+        },
       ],
     };
+  },
+  methods: {
+    activeAction() {
+      this.$refs.action.visible = true;
+    },
+    activeModal() {
+      this.$refs.modal.visible = true;
+    },
+    activeToast(item) {
+      this.$refs[item].show();
+    },
   },
   components: {
     YuButton,
@@ -314,6 +469,13 @@ export default {
     YuRadio,
     YuInput,
     YuPicker,
+    YuSwitch,
+    YuSearch,
+    YuNotice,
+    YuLoading,
+    YuAction,
+    YuModal,
+    YuToast,
   },
 };
 </script>
@@ -351,7 +513,7 @@ export default {
     }
     &:hover {
       &::-webkit-scrollbar {
-        width: 4px;
+        width: 0;
       }
     }
     &::-webkit-scrollbar-thumb {
@@ -366,7 +528,7 @@ export default {
   .sub-title {
     color: $light-text;
     margin: px2rem(8px) $normal;
-    font-size: $large;
+    font-size: $big;
   }
 
   .noPadding > .sub-title {
