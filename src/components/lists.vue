@@ -1,22 +1,16 @@
 <template>
-  <div class="yu-lists">
-    <yu-text v-if="header">{{header}}</yu-text>
+  <div class="yu-lists" @click="handleClick($event)">
     <div class="lists"><slot/></div>
-    <yu-text v-if="footer">{{footer}}</yu-text>
   </div>
 </template>
 
 <script>
-import YuText from './text';
-
 export default {
   name: 'YuLists',
-  props: {
-    header: String,
-    footer: String,
-  },
-  components: {
-    YuText,
+  methods: {
+    handleClick($event) {
+      this.$emit('click', $event);
+    },
   },
 };
 </script>
@@ -25,32 +19,31 @@ export default {
   @import "../assets/css/varible";
 
   .yu-lists {
+    .yu-list{
+      .list-box{
+        padding-left: $normal;
+        .list{
+          border-top: none!important;
+          margin-bottom: 0!important;
+        }
+      }
+      &:first-child{
+        .list{
+          border-top: none!important;
+        }
+      }
+      &:last-child{
+        .list{
+          border-bottom: none!important;
+          margin-bottom: 1px;
+        }
+      }
+    }
     .lists{
       background: #fff;
       border-top: 1px solid $border;
       border-bottom: 1px solid $border;
     }
-    .yu-list{
-      .list-box{
-        padding-left: $normal;
-        .list{
-          border-top: none;
-          margin-bottom: 0;
-        }
-      }
-      &:first-child{
-        .list{
-          border-top: none;
-        }
-      }
-      &:last-child{
-        .list{
-          border-bottom: none;
-          margin-bottom: 1px;
-        }
-      }
-    }
-
 
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="yu-scroll" :class="{'down':(state===0),'up':(state===1),refresh:(state===2),touch:touching}" @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)">
+  <div class="yu-refresh" :class="{'down':(state===0),'up':(state===1),refresh:(state===2),touch:touching}" @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)">
     <div class="inner" :style="{ transform: 'translate3d(0, ' + top + 'px, 0)' }">
       <div class="pull-refresh">
         <slot name="pull-refresh">
@@ -22,6 +22,7 @@
 import YuLoading from './loading';
 
 export default {
+  name: 'YuRefresh',
   props: {
     offset: {
       type: Number,
@@ -178,7 +179,7 @@ export default {
 <style lang="scss" scoped type="text/scss">
   @import "../assets/css/varible";
 
-  .yu-scroll {
+  .yu-refresh {
     font-size: $big;
     position: absolute;
     top: px2rem(80px);
@@ -231,19 +232,19 @@ export default {
     }
   }
 
-  .yu-scroll.touch .inner {
+  .yu-refresh.touch .inner {
     transition-duration: 0;
   }
 
-  .yu-scroll.down .down-tip {
+  .yu-refresh.down .down-tip {
     display: block;
   }
 
-  .yu-scroll.up .up-tip {
+  .yu-refresh.up .up-tip {
     display: block;
   }
 
-  .yu-scroll.refresh .refresh-tip {
+  .yu-refresh.refresh .refresh-tip {
     display: block;
   }
 </style>

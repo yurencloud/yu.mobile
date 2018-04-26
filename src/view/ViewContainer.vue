@@ -100,21 +100,16 @@
       <yu-text>普通用法</yu-text>
       <yu-list title="我是标题" content="我是内容"/>
 
-      <yu-text>显示头部，底部文本</yu-text>
-      <yu-list title="我是标题" header="我是头部文本" content="我是内容"/>
-      <yu-list title="我是标题" footer="我是底部文本" content="我是内容"/>
-
       <yu-text>带副标题</yu-text>
-      <yu-list title="我是标题" header="我是头部文本" content="我是内容" description="带副标题"/>
+      <yu-list title="我是标题" content="我是内容" description="带副标题"/>
 
       <yu-text>内容为箭头</yu-text>
-      <yu-list title="我是标题" arrow description="带副标题"/>
-
+      <yu-list title="我是标题" arrow/>
 
       <yu-text>前置图标/图片/自定义</yu-text>
       <yu-list title="我是标题" icon="icon-user" arrow/>
       <yu-list title="我是标题" imgSrc="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" arrow/>
-      <yu-list title="我是标题" click arrow>
+      <yu-list title="我是标题"  arrow>
         <div slot="prepend">
           <yu-button shape="circle" icon="icon-user" style="margin-top: 8px"/>
         </div>
@@ -122,7 +117,7 @@
 
       <yu-text>列表组</yu-text>
       <yu-lists>
-        <yu-list title="我是标题" click icon="icon-user" arrow description="带副标题"/>
+        <yu-list title="我是标题"  icon="icon-user" arrow description="带副标题"/>
         <yu-list title="我是标题" imgSrc="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" arrow
                  description="带副标题"/>
         <yu-list title="我是标题" arrow description="带副标题">
@@ -130,12 +125,6 @@
             <yu-button shape="circle" icon="icon-user" style="margin-top: 8px"/>
           </div>
         </yu-list>
-      </yu-lists>
-
-      <yu-text>列表组显示头部和底部文本</yu-text>
-      <yu-lists header="我是头部文本" footer="我是底部文本">
-        <yu-list title="我是标题" click icon="icon-user" arrow description="带副标题"/>
-        <yu-list title="我是标题" click icon="icon-user" arrow description="带副标题"/>
       </yu-lists>
 
       <div class="sub-title">段落</div>

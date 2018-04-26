@@ -1,19 +1,26 @@
 <template>
   <div>
+  <yu-lists>
+    <yu-list title="我是标题" click icon="icon-user" arrow description="带副标题"/>
+    <yu-list title="我是标题" imgSrc="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" arrow
+             description="带副标题"/>
+  </yu-lists>
     1234
-    <yu-refresh :on-refresh="onRefresh" :on-infinite="onInfinite" :dataList="scrollData">
-      <ul class="listItem">
-        <li v-bind:key="index" v-for="(item,index) in listdata">
-          <span>{{ item.date }}</span>
-          <span>{{ item.portfolio }}</span>
-          <span :class="{'state0':(item.state===0),'state1':(item.state===1),state2:(item.state===2)}"  >{{ item.drop }}</span>
-        </li>
-      </ul>
-    </yu-refresh>
+    <!--<yu-refresh :on-refresh="onRefresh" :on-infinite="onInfinite" :dataList="scrollData">-->
+      <!--<ul class="listItem">-->
+        <!--<li v-bind:key="index" v-for="(item,index) in listdata">-->
+          <!--<span>{{ item.date }}</span>-->
+          <!--<span>{{ item.portfolio }}</span>-->
+          <!--<span :class="{'state0':(item.state===0),'state1':(item.state===1),state2:(item.state===2)}"  >{{ item.drop }}</span>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</yu-refresh>-->
   </div>
 </template>
 <script>
 import YuRefresh from '../components/refresh';
+import YuLists from '../components/lists';
+import YuList from '../components/list';
 
 export default {
   data() {
@@ -30,6 +37,8 @@ export default {
   },
   components: {
     YuRefresh,
+    YuLists,
+    YuList,
   },
   mounted() {
     this.getList();

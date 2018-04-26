@@ -1,7 +1,6 @@
 <template>
   <div class="yu-list">
-    <yu-text v-if="header">{{header}}</yu-text>
-    <div class="list-box" :class="[{click:click,disabled:disabled}]" @click="handleClick">
+    <div class="list-box" :class="[{disabled:disabled}]" @click="handleClick">
       <div class="list">
         <div v-if="showTitle" class="title">
           <div v-if="showPrepend" class="prepend">
@@ -23,13 +22,10 @@
         </div>
       </div>
     </div>
-    <yu-text v-if="footer">{{footer}}</yu-text>
   </div>
 </template>
 
 <script>
-import YuText from './text';
-
 export default {
   name: 'YuList',
   props: {
@@ -39,7 +35,6 @@ export default {
     arrow: Boolean,
     icon: String,
     imgSrc: String,
-    click: Boolean,
     header: String,
     footer: String,
     short: Boolean,
@@ -68,9 +63,6 @@ export default {
     document.body.addEventListener('touchstart', () => {
     });
   },
-  components: {
-    YuText,
-  },
 };
 </script>
 
@@ -83,7 +75,7 @@ export default {
       background: #fff;
       /*取消移动端的点击阴影*/
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      &.click:active:not(.disabled) {
+      &:active:not(.disabled) {
         transition: background-color .2s;
         background: $active;
       }
@@ -155,7 +147,7 @@ export default {
         text-align: right;
         .arrow {
           color: $lighter-text;
-          font-size: px2rem(26px);
+          font-size: px2rem(22px);
           vertical-align: middle;
         }
       }

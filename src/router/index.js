@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import ViewContainer from '@/view/ViewContainer';
 import ViewContainer2 from '@/view/ViewContainer2';
-import ViewTest from '@/view/ViewTest'
+import ViewTest from '@/view/ViewTest';
 
 Vue.use(Router);
 
@@ -24,4 +24,4 @@ export default new Router({
       component: ViewTest,
     },
   ],
-})
+});

@@ -16,4 +16,5 @@ export default {
   #app {
     font-family: $font-family;
   }
+
 </style>
