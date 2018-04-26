@@ -343,6 +343,63 @@
       <yu-toast ref="three" content="不同状态" status="success"/>
     </div>
 
+    <div class="title">结果页</div>
+    <div class="mobile-box" style="box-sizing: padding-box">
+      <div class="sub-title">普通用法</div>
+      <yu-result title="支付成功" content="恭喜啊" status="alipay"/>
+      <yu-result title="支付成功" content="恭喜啊" status="wechat"/>
+      <yu-result title="支付成功" content="恭喜啊" status="success"/>
+      <yu-result title="支付成功" content="恭喜啊" status="fail"/>
+      <yu-result title="支付成功" content="恭喜啊" status="wait"/>
+      <yu-result title="支付成功" content="恭喜啊" status="warn"/>
+    </div>
+
+    <div class="title">标签页</div>
+    <div class="mobile-box" style="box-sizing: padding-box">
+      <div class="sub-title">普通用法</div>
+      <yu-tabs :tabs="tabs" @switch="handleSwitch"/>
+      <yu-text v-show="activeTab === 0">1</yu-text>
+      <yu-text v-show="activeTab === 1">2</yu-text>
+      <yu-text v-show="activeTab === 2">3</yu-text>
+      <yu-text v-show="activeTab === 3">4</yu-text>
+    </div>
+
+    <div class="title">标签栏</div>
+    <div class="mobile-box" style="box-sizing: padding-box">
+      <div class="sub-title">普通用法</div>
+      <yu-tab-bar :tabBar="tabBar" @switch="handleSwitchBar"/>
+      <yu-text v-show="activeTabBar === 0">1</yu-text>
+      <yu-text v-show="activeTabBar === 1">2</yu-text>
+      <yu-text v-show="activeTabBar === 2">3</yu-text>
+      <yu-text v-show="activeTabBar === 3">4</yu-text>
+    </div>
+
+    <div class="title">头部导航</div>
+    <div class="mobile-box" style="box-sizing: padding-box">
+      <div class="sub-title">普通用法</div>
+      <yu-nav-bar @clickMenu="showPopover"/>
+    </div>
+
+    <div class="title">气泡菜单</div>
+    <div class="mobile-box" style="box-sizing: padding-box">
+      <div class="sub-title">普通用法</div>
+      <yu-popover ref="popover">
+        <li>
+          <i class="iconfont icon-camera"></i>相机
+        </li>
+        <li>
+          <i class="iconfont icon-qrcode"></i>二维码
+        </li>
+        <li>
+          <i class="iconfont icon-question"></i>帮助
+        </li>
+      </yu-popover>
+    </div>
+
+
+
+
+
     <div style="margin-bottom: 400px"></div>
   </div>
 </template>
@@ -364,11 +421,32 @@ import YuLoading from '../components/loading';
 import YuAction from '../components/action';
 import YuModal from '../components/modal';
 import YuToast from '../components/toast';
+import YuResult from '../components/result';
+import YuTabs from '../components/tabs';
+import YuTabBar from '../components/tab-bar';
+import YuNavBar from '../components/nav-bar';
+import YuPopover from '../components/popover';
+import YuRefresh from '../components/refresh';
 
 export default {
   name: 'ViewContainer',
   data() {
     return {
+
+      activeTab: 0,
+      activeTabBar: 0,
+      tabs: [
+        { label: '标签一', icon: 'icon-user' },
+        { label: '标签二', icon: 'icon-home' },
+        { label: '标签三' },
+        { label: '标签四' },
+      ],
+      tabBar: [
+        { label: '标签一', icon: 'icon-user' },
+        { label: '标签二', icon: 'icon-home' },
+        { label: '标签三' },
+        { label: '标签四' },
+      ],
       options: [
         { value: 0, label: '博士', description: '正经的', checked: false },
         { value: 1, label: '本科', checked: false },
@@ -467,6 +545,16 @@ export default {
     activeToast(item) {
       this.$refs[item].show();
     },
+    handleSwitch(index, item) {
+      this.activeTab = index;
+    },
+    handleSwitchBar(index, item) {
+      this.activeTabBar = index;
+    },
+    showPopover() {
+      this.$refs.popover.visible = true;
+    },
+
   },
   components: {
     YuButton,
@@ -484,6 +572,12 @@ export default {
     YuAction,
     YuModal,
     YuToast,
+    YuResult,
+    YuTabs,
+    YuTabBar,
+    YuNavBar,
+    YuPopover,
+    YuRefresh,
   },
 };
 </script>

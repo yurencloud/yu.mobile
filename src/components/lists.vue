@@ -33,6 +33,10 @@ export default {
     .yu-list{
       .list-box{
         padding-left: $normal;
+        .list{
+          border-top: none;
+          margin-bottom: 0;
+        }
       }
       &:first-child{
         .list{

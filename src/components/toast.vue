@@ -22,18 +22,18 @@ export default {
     },
     statusIcon: {
       type: Object,
-      default: ()=>{return {
+      default: () => ({
         success: 'icon-check-circle',
         fail: 'icon-close-circle',
         offline: 'icon-sad',
         loading: 'icon-loading',
-      }}
-    }
+      }),
+    },
   },
   methods: {
     show() {
       this.visible = true;
-      if(this.status==='loading') return;
+      if (this.status === 'loading') return;
       setTimeout(() => {
         this.visible = false;
       }, 2000);
