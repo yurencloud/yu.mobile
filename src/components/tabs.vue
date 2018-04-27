@@ -38,14 +38,14 @@ export default {
   @import "../assets/css/varible";
 
   .yu-tabs {
-
     box-sizing: border-box;
     background-color: #fff;
     width: 100%;
     border-bottom: 1px solid $border;
-    overflow-x: scroll;
+    overflow-x: auto;
     white-space: nowrap;
     color: $text;
+    font-size: 0;
     &::-webkit-scrollbar {
       height: 0;
     }

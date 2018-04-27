@@ -170,7 +170,6 @@
       <yu-checkbox name="c" :options="options3" bottom>
         <span slot="footer">我已经阅读 <a href="">协议</a></span>
       </yu-checkbox>
-      >
     </div>
 
     <div class="title">单选框</div>

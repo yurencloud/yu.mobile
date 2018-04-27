@@ -43,7 +43,7 @@ export default {
     height: 100%;
     .popover{
       position: absolute;
-      top: 6%;
+      top: 8%;
       right: 5%;
       .pointer{
         position: absolute;
