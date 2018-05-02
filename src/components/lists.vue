@@ -20,22 +20,17 @@ export default {
 
   .yu-lists {
     .yu-list{
+      border: none;
       .list-box{
         padding-left: $normal;
+        border-bottom: 1px solid $border;
         .list{
-          border-top: none!important;
-          margin-bottom: 0!important;
-        }
-      }
-      &:first-child{
-        .list{
-          border-top: none!important;
+          padding-left: 0;
         }
       }
       &:last-child{
-        .list{
-          border-bottom: none!important;
-          margin-bottom: 1px;
+        .list-box{
+          border-bottom: none;
         }
       }
     }

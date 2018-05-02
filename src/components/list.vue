@@ -1,13 +1,13 @@
 <template>
   <div class="yu-list">
-    <div class="list-box" :class="[{disabled:disabled}]" @click="handleClick">
+    <div v-if="showPrepend" class="prepend">
+      <i v-if="icon" class="iconfont" :class="[icon]"></i>
+      <img v-if="imgSrc" :src="imgSrc"/>
+      <slot name="prepend"/>
+    </div>
+    <div class="list-box" :class="[{disabled:disabled},{noPaddingLeft:showPrepend}]" @click="handleClick">
       <div class="list">
         <div v-if="showTitle" class="title">
-          <div v-if="showPrepend" class="prepend">
-            <i v-if="icon" class="iconfont" :class="[icon]"></i>
-            <img v-if="imgSrc" :src="imgSrc"/>
-            <slot name="prepend"/>
-          </div>
           <div class="after">
             <div class="main" :class="[{short:short,disabled:disabled}]">{{title}}</div>
             <div v-if="description" class="description">{{description}}</div>
@@ -71,8 +71,28 @@ export default {
   @import "../assets/css/function";
 
   .yu-list {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    border-top: 1px solid $border;
+    border-bottom: 1px solid $border;
+    align-items:center;/*指定垂直居中*/
+    .prepend {
+       padding: 0 12px;
+      i {
+        color: $text;
+        display: block;
+        font-size: px2rem(30px);
+
+      }
+      img {
+        width: px2rem(30px);
+      }
+    }
     .list-box {
-      background: #fff;
+      display: inline-block;
+      width: 100%;
+
       /*取消移动端的点击阴影*/
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       &:active:not(.disabled) {
@@ -80,36 +100,21 @@ export default {
         background: $active;
       }
       .list {
-        border-top: 1px solid $border;
-        border-bottom: 1px solid $border;
+
         font-size: $big;
         padding: 0 px2rem(14px);
         vertical-align: middle;
-        margin-bottom: -1px;
         display: flex;
         justify-content: space-between;
+      }
+
+      &.noPaddingLeft{
+        padding-left: 0;
       }
     }
 
     .title {
-      .prepend {
-        display: inline-block;
-        vertical-align: middle;
-        i {
-          color: $text;
-          display: block;
-          font-size: px2rem(30px);
-          margin-right: $tiny;
-          margin-top: px2rem(12px);
-          margin-bottom: px2rem(12px);
-        }
-        img {
-          width: px2rem(30px);
-          margin-right: $tiny;
-          margin-top: px2rem(8px);
-          margin-bottom: px2rem(8px);
-        }
-      }
+
       .after {
         display: inline-block;
         vertical-align: middle;

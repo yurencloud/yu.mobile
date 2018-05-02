@@ -1,6 +1,6 @@
 <template>
-    <yu-list :show-title="showTitle" :title="title" class="yu-input" :icon="icon" :imgSrc="imgSrc" :disabled="disabled">
-      <div slot="append" class="append">
+  <yu-list :show-title="showTitle" :title="title" class="yu-input" :icon="icon" :imgSrc="imgSrc" :disabled="disabled">
+    <div slot="append" class="append">
       <input v-if="!textarea" :type="type"
              :name="name"
              :placeholder="placeholder"
@@ -11,21 +11,21 @@
              v-model="value"
       >
       <textarea v-if="textarea" :type="type"
-             :name="name"
-             :placeholder="placeholder"
-             :autofocus="autofocus"
-             @blur="handleBlur($event)"
-             @keyup="handleKeyup($event)"
-             :readonly="readonly || disabled"
-             v-model="value"
-             :rows="rows"
+                :name="name"
+                :placeholder="placeholder"
+                :autofocus="autofocus"
+                @blur="handleBlur($event)"
+                @keyup="handleKeyup($event)"
+                :readonly="readonly || disabled"
+                v-model="value"
+                :rows="rows"
       >
       </textarea>
       <span v-if="wordCount" class="wordCount">{{value.length}}<span>/{{max}}</span></span>
       <i v-if="clear&&showClear" class="iconfont icon-close-circle yu-close" @click="handleClear($event)"></i>
       <span class="extra">{{extra}}</span>
-      </div>
-    </yu-list>
+    </div>
+  </yu-list>
 </template>
 
 <script>
@@ -105,78 +105,84 @@ export default {
   @import "../assets/css/varible";
 
   .yu-input {
-        .title{
-          width: 100px;
+    .list-box {
+      &:active {
+        background: #fff!important;
+      }
+      // TODO 修复list 样式
+    }
+    .title {
+      width: 100px;
+    }
+    .content {
+      width: 100%;
+      .append {
+        position: relative;
+        .extra {
+          float: right;
         }
-        .content{
-          width: 100%;
-          .append{
-            position: relative;
-            .extra{
-              float: right;
-            }
-            .yu-close{
-              vertical-align: top;
-              display: inline-block;
-              font-size: 20px;
-              color: $lighter-text;
-              &:hover{
-                color: $primary;
-              }
-            }
-            input{
-              display: inline-block;
-              border: none;
-              outline: none;
-              font-size: $big;
-              font-family: $font-family;
-              &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-                color: $lighter-text;
-              }
-
-              &::-moz-placeholder { /* Mozilla Firefox 19+ */
-                color: $lighter-text;
-              }
-
-              &:-ms-input-placeholder{
-                color: $lighter-text;
-              }
-
-              &::-webkit-input-placeholder{
-                color: $lighter-text;
-              }
-            }
-
-            textarea{
-              display: inline-block;
-              border: none;
-              outline: none;
-              font-size: $big;
-              font-family: $font-family;
-              &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-                color: $lighter-text;
-              }
-
-              &::-moz-placeholder { /* Mozilla Firefox 19+ */
-                color: $lighter-text;
-              }
-
-              &:-ms-input-placeholder{
-                color: $lighter-text;
-              }
-
-              &::-webkit-input-placeholder{
-                color: $lighter-text;
-              }
-              resize:none;
-            }
-
-            .wordCount{
-              position: absolute;
-              bottom: 4px;
-              right: 6px;
-            }
+        .yu-close {
+          vertical-align: top;
+          display: inline-block;
+          font-size: 20px;
+          color: $lighter-text;
+          &:hover {
+            color: $primary;
           }
         }
+        input {
+          display: inline-block;
+          border: none;
+          outline: none;
+          font-size: $big;
+          font-family: $font-family;
+          &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: $lighter-text;
+          }
+
+          &::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: $lighter-text;
+          }
+
+          &:-ms-input-placeholder {
+            color: $lighter-text;
+          }
+
+          &::-webkit-input-placeholder {
+            color: $lighter-text;
+          }
+        }
+
+        textarea {
+          display: inline-block;
+          border: none;
+          outline: none;
+          font-size: $big;
+          font-family: $font-family;
+          &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: $lighter-text;
+          }
+
+          &::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: $lighter-text;
+          }
+
+          &:-ms-input-placeholder {
+            color: $lighter-text;
+          }
+
+          &::-webkit-input-placeholder {
+            color: $lighter-text;
+          }
+          resize: none;
+        }
+
+        .wordCount {
+          position: absolute;
+          bottom: 4px;
+          right: 6px;
+        }
+      }
+    }
   }
 </style>
