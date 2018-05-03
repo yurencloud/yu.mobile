@@ -4,7 +4,7 @@
       <i class="iconfont icon-angle-left"></i>
       <span v-if="back">{{back}}</span>
     </div>
-    <div class="title">顶部导航栏</div>
+    <div class="title" >{{title}}</div>
     <div class="menu" @click="handleClickMenu">
       <span v-if="menu">{{menu}}</span>
       <i class="iconfont icon-bar-h"></i>
@@ -21,6 +21,7 @@ export default {
   props: {
     back: String,
     menu: String,
+    title: String,
   },
   methods: {
     handleClickBack() {

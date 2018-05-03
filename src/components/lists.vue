@@ -20,7 +20,7 @@ export default {
 
   .yu-lists {
     .yu-list{
-      border: none;
+      border: none!important;
       .list-box{
         padding-left: $normal;
         border-bottom: 1px solid $border;

@@ -60,12 +60,12 @@ export default {
     flex-wrap: nowrap;
     box-sizing: border-box;
     .left {
-      width: 90%;
+      width: 80%;
       i{
-        margin-left: 20px;
+        margin-left: px2rem(14px);
       }
       marquee.text {
-        width: 88%;
+        width: 80%;
         white-space: nowrap;
         vertical-align: top;
         display: inline-block;
@@ -73,14 +73,14 @@ export default {
       }
       div.text {
         vertical-align: bottom;
-        width: 88%;
+        width: 80%;
         white-space: nowrap;
         display: inline-block;
         overflow: hidden;
       }
     }
     .right{
-      width: 10%;
+      flex-basis: 10%;
       text-align: center;
       i {
         font-size: $huge;

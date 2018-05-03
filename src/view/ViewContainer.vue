@@ -209,7 +209,7 @@
       <yu-input title="名字" placeholder="请输入名字" name="myname4"/>
 
       <div class="sub-title">自定义图标/图片/组件</div>
-      <yu-input icon="icon-user" placeholder="请输入名字" name="myname"/>
+      <yu-input icon="icon-user" title="用户名" placeholder="请输入名字" name="myname"/>
       <yu-input img-src="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" placeholder="请输入名字"
                 name="myname5"/>
 
@@ -372,7 +372,7 @@
     <div class="title">头部导航</div>
     <div class="mobile-box" style="box-sizing: padding-box">
       <div class="sub-title">普通用法</div>
-      <yu-nav-bar @clickMenu="showPopover"/>
+      <yu-nav-bar title="导航栏" @clickMenu="showPopover"/>
     </div>
 
     <div class="title">气泡菜单</div>

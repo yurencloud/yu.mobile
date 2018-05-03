@@ -29,7 +29,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-const version = '1.0.6';
+const version = '1.0.12';
 
 const components = {
   version,

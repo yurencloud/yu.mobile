@@ -115,7 +115,6 @@ export default {
     .checkbox {
       position: relative;
       margin-right: 6px;
-      margin-bottom: -6px;
       display: inline-block;
       width: px2rem(20px);
       height: px2rem(20px);

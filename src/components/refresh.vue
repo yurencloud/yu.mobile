@@ -1,5 +1,10 @@
 <template>
-  <div class="yu-refresh" :class="{'down':(state===0),'up':(state===1),refresh:(state===2),touch:touching}" @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)">
+  <div class="yu-refresh"
+       :class="{'down':(state===0),'up':(state===1),refresh:(state===2),touch:touching}"
+       @touchstart="touchStart($event)"
+       @touchmove="touchMove($event)"
+       @touchend="touchEnd($event)"
+  >
     <div class="inner" :style="{ transform: 'translate3d(0, ' + top + 'px, 0)' }">
       <div class="pull-refresh">
         <slot name="pull-refresh">
@@ -169,7 +174,59 @@ export default {
     infiniteDone() {
       this.infiniteLoading = false;
     },
+    // TODO:: 用mouse来模拟touch
+    // 1、定义这两个函数
+    // touchEventToMouseEvent(event, eventType) {
+    //   if (!event.originalEvent || !event.originalEvent.targetTouches || event.originalEvent.targetTouches.length !== 1) { return false; }
+    //   const te = event.originalEvent.targetTouches[0];
+    //   let clientX = te.clientX,
+    //     clientY = te.clientY,
+    //     screenX = te.screenX,
+    //     screenY = te.screenY;
+    //
+    //   const simEvent = new MouseEvent(eventType, {
+    //     clientX,
+    //     clientY,
+    //     screenX,
+    //     screenY,
+    //     button: 0,
+    //     buttons: 0,
+    //   });
+    //   return simEvent;
+    // },
+    //
+    // findElm(targetElement) {
+    //   targetElement.on('touchstart', (e) => {
+    //     console.log('touchstart');
+    //     console.log(e);
+    //     const simEvent = this.touchEventToMouseEvent(e, 'mousedown');
+    //     if (simEvent != null) {
+    //       this.dispatchEvent(simEvent);
+    //     }
+    //   });
+    //
+    //   targetElement.on('touchmove', (e) => {
+    //     e.preventDefault();
+    //     console.log('touchmove');
+    //     const simEvent = this.touchEventToMouseEvent(e, 'mousemove');
+    //     if (simEvent != null) {
+    //       this.dispatchEvent(simEvent);
+    //     }
+    //   });
+    //
+    //   targetElement.on('touchend', (e) => {
+    //     console.log('touchend');
+    //     console.log(e);
+    //     const simEvent = this.touchEventToMouseEvent(e, 'mouseup');
+    //     if (simEvent != null) {
+    //       this.dispatchEvent(simEvent);
+    //     }
+    //   });
+    // },
   },
+  // mounted() {
+  //   this.findElm(document.querySelector('.yu-refresh'));
+  // },
   components: {
     YuLoading,
   },
@@ -182,7 +239,7 @@ export default {
   .yu-refresh {
     font-size: $big;
     position: absolute;
-    top: px2rem(80px);
+    top: px2rem(50px);
     right: 0;
     bottom: 0;
     left: 0;

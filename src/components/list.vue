@@ -1,12 +1,12 @@
 <template>
-  <div class="yu-list">
+  <div class="yu-list" :class="[{disabled:disabled,noActive:noActive}]">
     <div v-if="showPrepend" class="prepend">
       <i v-if="icon" class="iconfont" :class="[icon]"></i>
       <img v-if="imgSrc" :src="imgSrc"/>
       <slot name="prepend"/>
     </div>
-    <div class="list-box" :class="[{disabled:disabled},{noPaddingLeft:showPrepend}]" @click="handleClick">
-      <div class="list">
+    <div class="list-box" :class="[{noPaddingLeft:showPrepend}]" @click="handleClick">
+      <div class="list" :class="[{noPaddingLeft:showPrepend}]">
         <div v-if="showTitle" class="title">
           <div class="after">
             <div class="main" :class="[{short:short,disabled:disabled}]">{{title}}</div>
@@ -44,6 +44,7 @@ export default {
       type: Boolean,
       default: true,
     },
+    noActive: Boolean,
   },
   methods: {
     handleClick() {
@@ -76,9 +77,9 @@ export default {
     background: #fff;
     border-top: 1px solid $border;
     border-bottom: 1px solid $border;
-    align-items:center;/*指定垂直居中*/
+    align-items: center; /*指定垂直居中*/
     .prepend {
-       padding: 0 12px;
+      padding: 0 12px;
       i {
         color: $text;
         display: block;
@@ -89,27 +90,28 @@ export default {
         width: px2rem(30px);
       }
     }
+    /*取消移动端的点击阴影*/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    &:active:not(.disabled):not(.noActive) {
+      transition: background-color .2s;
+      background: $active;
+    }
     .list-box {
       display: inline-block;
       width: 100%;
-
-      /*取消移动端的点击阴影*/
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      &:active:not(.disabled) {
-        transition: background-color .2s;
-        background: $active;
-      }
       .list {
-
         font-size: $big;
         padding: 0 px2rem(14px);
         vertical-align: middle;
         display: flex;
         justify-content: space-between;
-      }
 
-      &.noPaddingLeft{
-        padding-left: 0;
+        &.noPaddingLeft {
+          padding-left: 0 !important;
+        }
+      }
+      &.noPaddingLeft {
+        padding-left: 0 !important;
       }
     }
 
@@ -124,13 +126,13 @@ export default {
         font-size: $big;
         color: $dark-text;
         padding: px2rem(12px) 0;
-        &.short{
-          overflow:hidden;
-          text-overflow:ellipsis;
-          white-space:nowrap;
+        &.short {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           width: 300px;
         }
-        &.disabled{
+        &.disabled {
           color: $lighter-text;
         }
       }
@@ -142,9 +144,9 @@ export default {
     }
 
     .content {
-      display:flex;/*Flex布局*/
-      align-items:center;/*指定垂直居中*/
-      &>div{
+      display: flex; /*Flex布局*/
+      align-items: center; /*指定垂直居中*/
+      & > div {
         /*display: inline-block;*/
         color: $light-text;
         padding: px2rem(12px) 0;

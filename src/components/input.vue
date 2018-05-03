@@ -1,5 +1,5 @@
 <template>
-  <yu-list :show-title="showTitle" :title="title" class="yu-input" :icon="icon" :imgSrc="imgSrc" :disabled="disabled">
+  <yu-list :show-title="showTitle" :title="title" class="yu-input" :icon="icon" :imgSrc="imgSrc" :disabled="disabled" no-active>
     <div slot="append" class="append">
       <input v-if="!textarea" :type="type"
              :name="name"
@@ -106,13 +106,11 @@ export default {
 
   .yu-input {
     .list-box {
-      &:active {
-        background: #fff!important;
-      }
+
       // TODO 修复list 样式
     }
     .title {
-      width: 100px;
+      flex-basis: 100px;
     }
     .content {
       width: 100%;
