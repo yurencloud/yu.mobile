@@ -19,6 +19,7 @@ import YuTabBar from './components/tab-bar';
 import YuNavBar from './components/nav-bar';
 import YuPopover from './components/popover';
 import YuRefresh from './components/refresh';
+import YuButtons from './components/buttons';
 
 // 在Vue全局安装一些快捷方法
 function install(Vue, opts = {}) {
@@ -29,7 +30,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-const version = '1.0.12';
+const version = '1.0.15';
 
 const components = {
   version,
@@ -55,6 +56,7 @@ const components = {
   YuNavBar,
   YuPopover,
   YuRefresh,
+  YuButtons,
 };
 
 export default components;
@@ -83,4 +85,5 @@ export {
   YuNavBar,
   YuPopover,
   YuRefresh,
+  YuButtons,
 };

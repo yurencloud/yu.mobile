@@ -80,6 +80,7 @@ export default {
     align-items: center; /*指定垂直居中*/
     .prepend {
       padding: 0 12px;
+      font-size: 0;
       i {
         color: $text;
         display: block;

@@ -1,7 +1,8 @@
 <template>
   <div class="yu-checkbox">
     <yu-lists v-if="!bottom" :header="header" :footer="footer" >
-      <yu-list v-for="item in options"
+      <yu-list v-for="(item, index) in options"
+               v-bind:key="index"
                :class="[{checked: item.checked}]"
                :disabled="disabled || item.disabled"
                :title="item.label"

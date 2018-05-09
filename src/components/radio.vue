@@ -1,8 +1,9 @@
 <template>
   <div class="yu-radio">
     <yu-lists>
-      <yu-list v-for="item in radioOptions"
+      <yu-list v-for="(item, index) in radioOptions"
                click
+               v-bind:key="index"
                :class="[{checked: item.checked}]"
                :title="item.label"
                :description="item.description"

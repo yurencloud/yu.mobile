@@ -7,7 +7,7 @@
     <div class="title" >{{title}}</div>
     <div class="menu" @click="handleClickMenu">
       <span v-if="menu">{{menu}}</span>
-      <i class="iconfont icon-bar-h"></i>
+      <i class="iconfont icon-bar-dot-h"></i>
     </div>
   </div>
 </template>
@@ -40,6 +40,7 @@ export default {
   @import "../assets/css/varible";
 
   .yu-nav-bar {
+    z-index: 1000;
     font-size: $big;
     height: px2rem(50px);
     background-color: #fff;

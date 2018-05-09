@@ -39,21 +39,25 @@
       </div>
 
       <yu-text>按钮组</yu-text>
-      <!--<yu-buttons>-->
-      <!--<yu-button type="primary">-->
-      <!--<i class="iconfont icon-angle-left"></i>-->
-      <!--上一页-->
-      <!--</yu-button>-->
-      <!--<yu-button type="primary">-->
-      <!--下一页-->
-      <!--<i class="iconfont icon-angle-right"></i>-->
-      <!--</yu-button>-->
-      <!--</yu-buttons>-->
-      <!--<yu-buttons>-->
-      <!--<yu-button icon="icon-edit" type="primary"/>-->
-      <!--<yu-button icon="icon-accessory" type="primary"/>-->
-      <!--<yu-button icon="icon-trash" type="primary"/>-->
-      <!--</yu-buttons>-->
+        <yu-text>
+          <yu-buttons>
+            <yu-button type="primary">
+              <i class="iconfont icon-angle-left"></i>
+              上一页
+            </yu-button>
+            <yu-button type="primary">
+              下一页
+              <i class="iconfont icon-angle-right"></i>
+            </yu-button>
+          </yu-buttons>
+        </yu-text>
+        <yu-text>
+      <yu-buttons>
+      <yu-button icon="icon-edit" type="primary"/>
+      <yu-button icon="icon-accessory" type="primary"/>
+      <yu-button icon="icon-trash" type="primary"/>
+      </yu-buttons>
+        </yu-text>
 
       <yu-text>禁用状态</yu-text>
       <div class="addPadding">
@@ -422,6 +426,7 @@ import YuTabBar from '../components/tab-bar';
 import YuNavBar from '../components/nav-bar';
 import YuPopover from '../components/popover';
 import YuRefresh from '../components/refresh';
+import YuButtons from '../components/buttons';
 
 export default {
   name: 'ViewContainer',
@@ -573,6 +578,7 @@ export default {
     YuNavBar,
     YuPopover,
     YuRefresh,
+    YuButtons,
   },
 };
 </script>
