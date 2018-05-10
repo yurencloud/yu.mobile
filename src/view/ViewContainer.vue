@@ -240,14 +240,14 @@
 
     <div class="title">选择器</div>
     <div class="mobile-box">
-      <!--<div class="sub-title">单列不联动</div>-->
-      <!--<yu-picker :options="pickerOptions"/>-->
+      <div class="sub-title">单列不联动</div>
+      <yu-picker :options="pickerOptions"/>
 
       <!--<div class="sub-title">多列不联动</div>-->
       <!--<yu-picker :options="pickerOptions" :cols="3"/>-->
 
-      <div class="sub-title">多列联动</div>
-      <yu-picker title="输入地址" :options="cascaderOptions" :cols="3" type="cascader"/>
+      <!--<div class="sub-title">多列联动</div>-->
+      <!--<yu-picker title="输入地址" :options="cascaderOptions" :cols="3" type="cascader"/>-->
 
     </div>
 
@@ -255,12 +255,26 @@
     <div class="mobile-box">
       <div class="sub-title">普通用法</div>
       <yu-switch />
+      <yu-text>其他颜色(开有多种颜色，关只有一种颜色)</yu-text>
+      <yu-switch on type="danger"/>
+      <yu-switch on type="success"/>
+      <yu-switch on type="info"/>
+      <yu-switch on type="warming"/>
+
+      <yu-text>标签文字</yu-text>
+      <yu-switch on label="关灯"/>
+      <yu-switch on after label="关灯">></yu-switch>
+
+      <yu-text>禁用开关</yu-text>
+      <yu-switch disabled label="关灯"/>
+      <yu-switch on after label="关灯" disabled>></yu-switch>
     </div>
 
     <div class="title">搜索栏</div>
     <div class="mobile-box">
       <div class="sub-title">普通用法</div>
       <yu-search/>
+      <yu-search show-cancel/>
     </div>
 
     <div class="title">通告栏</div>

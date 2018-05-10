@@ -132,6 +132,7 @@ export default {
       default: 'select', // select 不联动， cascader 联动
     },
     title: String,
+    remote: Boolean,
     split: {
       type: String,
       default: '/',
@@ -238,7 +239,7 @@ export default {
         second = {},
         third = {};
       if (this.type === 'select') {
-        first = this.options[0];
+        first = this.options[0][this.firstActive];
         second = this.cols >= 2 ? this.options[1][this.secondActive] : {};
         third = this.cols === 3 ? this.options[2][this.thirdActive] : {};
       } else {

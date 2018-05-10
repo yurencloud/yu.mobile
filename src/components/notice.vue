@@ -34,11 +34,12 @@ export default {
     arrow: Boolean,
   },
   methods: {
-    handleClick(){
+    handleClick() {
       this.$emit('click');
     },
-    handleClose(){
+    handleClose() {
       this.visible = false;
+      this.$emit('close');
     },
   },
   components: {},

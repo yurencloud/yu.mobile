@@ -42,7 +42,6 @@ export default {
   },
   props: {
     title: String,
-    options: Array,
     showTitle: {
       type: Boolean,
       default: true,
@@ -117,10 +116,14 @@ export default {
       .append {
         position: relative;
         .extra {
-          float: right;
+          position: absolute;
+          right: 0;
+          top:0;
         }
         .yu-close {
-          vertical-align: top;
+          position: absolute;
+          right: 0;
+          top:0;
           display: inline-block;
           font-size: 20px;
           color: $lighter-text;

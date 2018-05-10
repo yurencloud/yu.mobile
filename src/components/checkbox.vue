@@ -1,6 +1,6 @@
 <template>
   <div class="yu-checkbox">
-    <yu-lists v-if="!bottom" :header="header" :footer="footer" >
+    <yu-lists v-if="!bottom">
       <yu-list v-for="(item, index) in options"
                v-bind:key="index"
                :class="[{checked: item.checked}]"
@@ -51,8 +51,6 @@ export default {
     name: String,
     disabled: Boolean,
     bottom: Boolean,
-    header: String,
-    footer: String,
   },
   methods: {
     handleClick(item) {

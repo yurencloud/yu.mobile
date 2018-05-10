@@ -2,11 +2,11 @@
   <yu-list>
     <div class="yu-switch append" slot="append" @click="handleClick" :class="[{disabled:disabled}]">
       <input type="checkbox" :disabled="disabled" :name="name" v-model="checked" :value="value">
-      <span v-if="!after">{{checked?activeLabel||label:inactiveLabel||label}}</span>
+      <span class="label" v-if="!after">{{checked?activeLabel||label:inactiveLabel||label}}</span>
       <span class="switch" v-if="visible" :class="[{on:checked},type,{disabled:disabled}]">
         <span class="circle"></span>
         </span>
-      <span v-if="after">{{checked?activeLabel||label:inactiveLabel||label}}</span>
+      <span class="label" v-if="after">{{checked?activeLabel||label:inactiveLabel||label}}</span>
     </div>
   </yu-list>
 </template>
@@ -74,7 +74,9 @@ export default {
     }
     display: inline-block;
     span{
-      font-size: $normal;
+      font-size: $big;
+      line-height: 30px;
+      vertical-align: middle;
     }
     span:nth-child(1){
       margin-right: 8px;
@@ -83,7 +85,7 @@ export default {
       margin-left: 8px;
     }
     .switch {
-      font-size: $normal;
+      font-size: $big;
       display: inline-block;
       width: px2rem(60px);
       height: px2rem(30px);
@@ -91,22 +93,24 @@ export default {
       border-radius: px2rem(25px);
       padding: 2px;
       box-sizing: border-box;
+      .label{
+
+      }
       .circle {
-        vertical-align: middle;
         box-sizing: border-box;
         display: inline-block;
         width: px2rem(26px);
         height: px2rem(26px);
         background: #fff;
-        border-radius: px2rem(13px);
+        border-radius: px2rem(20px);
         transition: all .4s ease;
-        transform: translateX(px2rem(-20px));
+        transform: translateX(px2rem(-20px)) translateY(-4px);
       }
       transition: background-color .4s ease;
       &.on {
         .circle{
           transition: all .4s ease;
-          transform: translateX(px2rem(8px));
+          transform: translateX(px2rem(8px)) translateY(-4px);
         }
         @include generalAllColorSwitch();
       }

@@ -22,6 +22,7 @@ export default {
   methods: {
     handleCancel() {
       this.visible = false;
+      this.$emit('cancel');
     },
   },
   components: {

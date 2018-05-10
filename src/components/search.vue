@@ -4,10 +4,12 @@
            :placeholder="placeholder"
            @focus="handleFocus"
            @blur="handleBlur"
+           ref="input"
            v-model="value"
     >
-    <i class="iconfont icon-search-o" :class="[{focus:focus||value.length>0}]"></i>
-    <div class="cancel" :class="[{focus:focus||value.length>0},{showCancel:showCancel}]">取消</div>
+    <i class="iconfont icon-search-o search" :class="[{focus:focus||value.length>0},{showCancel:showCancel}]"></i>
+    <i v-if="clear" v-show="value.length>0" class="iconfont icon-close-circle clear" @click="handleClear"></i>
+    <div class="cancel" :class="[{focus:focus||value.length>0},{showCancel:showCancel}]" @click="handleCancel">取消</div>
   </div>
 </template>
 
@@ -29,15 +31,29 @@ export default {
       type: Boolean,
       default: false,
     },
-    showCancel: Boolean,
+    showCancel: Boolean, // 一直显示取消按钮
     defaultValue: String,
+    clear: {
+      type: Boolean,
+      default: true,
+    },
   },
   methods: {
     handleFocus() {
       this.focus = true;
+      this.$emit('focus');
     },
     handleBlur() {
       this.focus = false;
+      this.$emit('blur');
+    },
+    handleCancel() {
+      this.value = '';
+    },
+    handleClear() {
+      this.focus = true;
+      this.value = '';
+      this.$refs.input.focus();
     },
   },
   components: {},
@@ -55,16 +71,28 @@ export default {
     position: relative;
     overflow: hidden;
 
-    i {
+    i.search {
       position: absolute;
       left: 40%;
-      top: 12px;
+      top: 10px;
       font-size: px2rem(26px);
       color: $lighter-text;
       transition: left .4s;
       &.focus {
         left: 5%;
       }
+      &.showCancel:not(.focus) {
+        left: 36%;
+      }
+    }
+
+    i.clear{
+      position: absolute;
+      right:18%;
+      top: 12px;
+      font-size: px2rem(22px);
+      color: $lighter-text;
+      transition: left .4s;
     }
     ::-webkit-input-placeholder {
       transition: all .4s;
