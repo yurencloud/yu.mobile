@@ -1,11 +1,11 @@
 <template>
   <div class="yu-nav-bar">
-    <div class="back" @clikc="handleClickBack">
+    <div v-if="showBack" class="back" @clikc="handleClickBack">
       <i class="iconfont icon-angle-left"></i>
       <span v-if="back">{{back}}</span>
     </div>
     <div class="title" >{{title}}</div>
-    <div class="menu" @click="handleClickMenu">
+    <div v-if="showMenu" class="menu" @click="handleClickMenu">
       <span v-if="menu">{{menu}}</span>
       <i class="iconfont icon-bar-dot-h"></i>
     </div>
@@ -22,6 +22,14 @@ export default {
     back: String,
     menu: String,
     title: String,
+    showBack: {
+      type: Boolean,
+      default: true,
+    },
+    showMenu: {
+      type: Boolean,
+      default: true,
+    },
   },
   methods: {
     handleClickBack() {
