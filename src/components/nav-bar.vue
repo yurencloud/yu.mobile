@@ -1,6 +1,6 @@
 <template>
   <div class="yu-nav-bar">
-    <div v-if="showBack" class="back" @clikc="handleClickBack">
+    <div v-if="showBack" class="back" @click="handleClickBack">
       <i class="iconfont icon-angle-left"></i>
       <span v-if="back">{{back}}</span>
     </div>
